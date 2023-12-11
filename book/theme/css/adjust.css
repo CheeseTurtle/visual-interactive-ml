@@ -1,0 +1,244 @@
+
+/*@import 'variables.css'; */ /*for some reason cannot be found*/
+
+
+
+
+
+body>div#body-container {
+    display: block;
+    counter-reset: section chapter;
+}
+
+/*/*div.page-wrapper, div.page {
+
+}* /
+
+.sidebar-visible nav.sidebar, 
+.sidebar-visible div.sidebar-scrollbox/*, 
+.sidebar-visible div.sidebar-resize-handle,
+.sidebar-visible div.sidebar-resize-indicator* / {
+    
+}
+
+nav.sidebar#sidebar {
+
+}*/
+
+.nav-chapters {
+    max-width: 2.5vw;
+}
+
+@media only screen and (min-width:1400px) {
+    div.sidetoc {
+        order: 3;
+        max-width: calc(14vw + 2rem);
+        /*display: flex;
+        flex-grow: 1;
+        flex-shrink: 1;*/
+        
+        /*position: -webkit-sticky;
+        position: sticky;*/
+        left: unset !important;
+        min-width: min-content;
+        right: 3vw;
+        padding: 0;
+        padding-inline-start: 0 !important;
+    }
+}
+
+div.sidetoc {
+    background: none;
+}
+
+div.sidetoc>nav.pagetoc {
+    /*display: flex;
+    flex-flow: column nowrap;*/
+    /*position: -webkit-sticky !important;*/
+    position: fixed;
+    left: unset !important;
+    right: calc(3vw);
+    max-width: 14vw;
+    background: color-mix(in srgb, var(--sidebar-bg) 75%, transparent);
+    padding-left: 0.5rem;
+    padding-right: 1rem;
+
+    border-left: 1px solid var(--sidebar-bg);
+}
+
+.rust div.sidetoc>nav.pagetoc {
+    background: color-mix(in srgb, var(--sidebar-bg) 60%, black 25%);
+}
+
+div.sidetoc>nav.pagetoc>a{
+    background: none;
+    border: none;
+}
+/*div.sidetoc {
+    /*flex-flow: column nowrap;* /
+}*/
+
+blockquote {
+    padding-inline-start: 0% !important;
+}
+
+div.content#content>main {
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    /*box-sizing: content-box;
+    max-width: unset;
+    padding-inline-end: auto;*/
+    /*display: flex;
+    flex-flow: column nowrap;*/
+
+    max-width: unset;
+}
+
+main>h1>a, main>h2>a, main>h3>a, main>h4>a ,main>h5>a,
+main>div, main>p, main>ul, main>ol, main>pre, main>span, main>table, main>pre/*, main>blockquote*/ {
+    display: block;
+    max-width: calc(var(--content-max-width) - min(10%,10vw));
+    margin-inline-end: auto;
+    margin-right: auto;
+    margin-block-end: auto;
+    font-family: var(--header-font);
+}
+
+div.content#content>main>div, div.content#content>main>span, div.content#content>main>p, div.content#content>main>nav, div.content#content>main>h1,
+div.content#content>main>h2, div.content#content>main>h3, div.content#content>main>h4, div.content#content>main>h5, div.content#content>main>image,
+main>pre, main>ol, main>ul, main>p, main>table, main>pre>*, main>blockquote {
+    padding-inline-start: calc(min(10%,10vw));
+}
+
+main>h2, main>h3, main>h4 {
+    line-height: 2em;
+}
+
+main>h1 {
+    /*background-color: color-mix(in srgb, var(--table-header-bg) 100%, transparent);*/
+    background-color: color-mix(in srgb, var(--fg) 20%, var(--table-header-bg));
+    font-weight: 900;
+    font-variant: small-caps;
+    /*text-decoration-line: underline;*/
+
+    font-size: 2.2em;
+
+    /*line-height: 1.5em;
+    padding-top: 0.25em;
+    padding-bottom: 0.75em;*/
+
+    line-height: 2em;
+}
+
+main>h2 {
+    background-color: color-mix(in srgb, var(--table-header-bg) 100%, transparent);
+    font-size: 1.8em;
+    font-weight: 900;
+}
+
+main>h3 {
+    background-color: color-mix(in srgb, var(--table-header-bg) 60%, transparent);
+    font-size: 1.5em;
+    font-weight: 800;
+    font-style: italic;
+    text-transform: uppercase;
+}
+
+main>h4 {
+    background-color: color-mix(in srgb, var(--table-header-bg) 20%, transparent);
+    font-size: 1.25em;
+    font-weight: 700;
+}
+
+main>h5{
+    font-size: 1em;
+    font-weight: 600;
+    font-variant: small-caps;
+}
+
+/*
+main>h1::before {
+    background-color: green;
+    content: " ";
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    height: 1em;
+    width: 100px;
+}
+*/
+
+/*blockquote::before {
+    display: block;
+    position: relative;
+    padding-inline-start: calc(min(10%,10vw));
+    background-color: blue !important;
+    content: "";
+}*/
+
+blockquote {
+    display: block;
+    margin-inline-start: calc(min(10%,10vw) + 8ex);
+    max-width: calc(var(--content-max-width) - max(10%,10vw) - 8ex);
+    width: auto;
+    margin-right: auto;
+    margin-block-end: auto;
+    margin-inline-end: auto;
+    padding-left: 10rex;
+    padding-right: 20px;
+    font-family: var(--quote-font);
+}
+
+blockquote>p {
+    margin-inline-start: 6ex;
+    font-style: italic;
+}
+
+
+nav.nav-wide-wrapper {
+    background: none;
+    /*display: flex;
+    flex-flow: row nowrap;
+    padding-left: var(--page-padding);
+    padding-right: var(--page-padding);
+    margin-left: var(--page-padding);
+    margin-right: var(--page-padding);
+    justify-content: space-between;    
+    justify-items: stretch;*/
+}
+
+nav.nav-wide-wrapper>a.nav-chapters {
+    background: color-mix(in srgb, var(--sidebar-active) 5%, 
+        black 3%);
+    /*flex-basis: 15px;
+    max-width: 25px;
+    min-width: 15px;*/
+    width: calc(3vw - var(--page-padding));
+    /*flex-grow: 0;
+    flex-shrink: 0;*/
+}
+
+/*
+nav.nav-wide-wrapper>a.nav-chapters.previous {
+    /*left: unset;* /
+}
+
+nav.nav-wide-wrapper>a.nav-chapters.next {
+    /*right: 0;* /
+}*/
+
+main>h1::before, main>h2::before, 
+main>h3::before, main>h4::before,
+main>h5::before {
+    float: inline-start;
+}
+
+div.content#content>main>div.admonition {
+    padding-inline-start: 1.2rem;
+    margin-inline-start: calc(min(10%,10vw));
+}
+
+div.content#content>main>div.admonition>div:last-child:not(.admonition-title) {
+    padding-inline-start: 2.5rem;
+}

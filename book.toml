@@ -4,3 +4,173 @@ language = "en"
 multilingual = false
 src = "src"
 title = "Visual and Interactive ML Resources"
+
+
+[build]
+build-dir="book"
+create-missing = true # Default: false
+use-default-preprocessors = true
+
+# TEXT MODS
+
+[preprocessor.regex]
+after=["links","extended-markdown-table"]
+patterns = "./src/regex.json"
+
+# [preprocessor.regex-replacer]
+# command="mdbook-regex-replacer"
+
+# add your regex rule
+# use crates regex 
+# https://crates.io/crates/regex
+# https://docs.rs/regex/1.4.3/regex/#example-replacement-with-named-capture-groups
+# [[preprocessor.regex-replacer.items]]
+#regex="==(?P<c>.+?)=="
+#rep="<mark>$c</mark>"
+
+
+[preprocessor.extended-markdown-table]
+
+################## DOM TREE MODS
+
+# # https://crates.io/crates/mdbook-last-changed
+[preprocessor.last-changed]
+command = "mdbook-last-changed"
+renderer = ["html"]
+
+################## INDEXING AND BIB
+
+# [preprocessor.index]
+# [preprocessor.indexing]
+
+# [preprocessor.tag]
+# command = "mdbook-tag"
+# Optional key to customize the output filename (defaults to tags.md)
+# filename = "customtagsfile.md"
+
+################# TOC
+
+# https://crates.io/crates/mdbook-theme
+# [preprocessor.theme] # DON'T USE THIS. IT IS GLITCHY.
+# pagetoc        = false
+
+# https://github.com/badboy/mdbook-toc
+# [preprocessor.toc]
+# command = "mdbook-toc"
+# renderer = ["html"]
+# max-level = 4
+
+[preprocessor.pagetoc]
+
+
+################## THEME
+
+# [preprocessor.codeblocks]
+# renderers = ["html"]
+# cpp = { color = "#FFFF99", link = "https://wiki.redmodding.org/red4ext" }
+# redscript = { color = "tomato", link = "https://wiki.redmodding.org/redscript" }
+# rust = { color = "#ac4313", link = "https://github.com/jac3km4/red4ext-rs" }
+# lua = { link = "https://wiki.redmodding.org/cyber-engine-tweaks" }
+# swift = { label = "Swift code snippet", color = "skyblue" }
+
+[preprocessors.inline-highlighting]
+default-language = "py"
+
+[preprocessor.admonish]
+command = "mdbook-admonish"
+assets_version = "3.0.1" # do not edit: managed by `mdbook-admonish install`
+
+[preprocessor.catppuccin]
+assets_version = "2.1.0"     # DO NOT EDIT: Managed by `mdbook-catppuccin install`
+
+#################### EMBED
+
+# [preprocessor.embed]
+
+[preprocessor.webinclude]
+
+#################### DOM ATTR MODS
+
+[preprocessor.links]
+
+########################################### OUTPUT ################################
+################### OUTPUT: HTML
+
+[output.html]
+theme = "theme"
+default-theme = "light"
+preferred-dark-theme = "ayu"
+curly-quotes = true
+mathjax-support = true
+copy-fonts = true
+additional-css = ['./theme/css/infobox.css','./theme/pagetoc.css','./theme-admonish/mdbook-admonish.css', './theme/css/catppuccin.css', './theme-catppuccin/catppuccin-admonish.css', './theme/css/adjust.css']#, '.\book\css\mdbook-admonish.css']
+additional-js  = ['./theme/pagetoc.js']
+no-section-label = false
+git-repository-url = "https://github.com/CheeseTurtle/visual-interactive-ml"
+git-repository-icon = "fa-github" # "fa-code-fork"
+edit-url-template = "https://github.com/CheeseTurtle/visual-interactive-ml/edit/main/{path}"
+# site-url = "/example-book/"
+cname = "myproject.rs" # ???
+# input-404 = "not-found.md" # Default: "404.md"
+
+[output.html.print]
+enable = true    # include support for printable output
+page-break = true # insert page-break after each chapter
+
+[output.html.fold]
+enable = true    # whether or not to enable section folding
+level = 1         # the depth to start folding
+
+# [output.html.playground]
+# editable = false         # allows editing the source code
+# copyable = true          # include the copy button for copying code snippets
+# copy-js = true           # includes the JavaScript for the code editor
+# line-numbers = false     # displays line numbers for editable code
+# runnable = true          # displays a run button for rust code
+
+[output.html.code]
+# A prefix string per language (one or more chars).
+# Any line starting with whitespace+prefix is hidden.
+hidelines = { python = "~" }
+
+[output.html.search]
+enable = true            # enables the search feature (Default: true)
+limit-results = 30       # maximum number of search results (Default: 30)
+teaser-word-count = 30   # number of words used for a search result teaser (Default: 30)
+use-boolean-and = true   # multiple search terms must all match (Default: false)
+boost-title = 3          # ranking boost factor for matches in headers (Default: 2)
+boost-hierarchy = 2      # ranking boost factor for matches in page names (Default: 1)
+boost-paragraph = 1      # ranking boost factor for matches in text (Default: 1)
+expand = true            # partial words will match longer terms (Default: true)
+heading-split-level = 4  # link results to heading levels (Default: 3)
+copy-js = true           # include Javascript code for search (Default: true)
+
+# [output.html.redirect]
+# "/appendices/bibliography.html" = "https://rustc-dev-guide.rust-lang.org/appendix/bibliography.html"
+# "/other-installation-methods.html" = "../infra/other-installation-methods.html"
+
+[output.html.playground]
+editable = true
+# editor = "/path/to/editor" # Default: ace
+
+
+# OTHER OUTPUT
+
+# [output.wordcount]
+# optional = true
+# ignores=[]
+
+# [output.markdown]
+# optional = true
+
+
+
+
+    # {
+    #     "pattern": "(?ms:```infos\\b$\\s+(?P<entry>^\\s*(?P<head>[^\\s:]+[^`\\r\\n\\t:]*)[:\\t]\\s*(?P<tail>[^`\\r\\n]+\\S+)[^`]*$\\s+)+^```)",
+    #     "template": "REPLACED ($entry)"
+    # },
+    # {
+    #     "pattern": "(?m:```info\\b(?<nl>\\r?\\n)$(?:(?P<head>[\\S&&^:]+):\\s*(?P<tail>[^\\r\\n`]+)\\r?\\n$)+?^```)",
+    #     "template": "($head): [$tail]$nl"
+    # }

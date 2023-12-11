@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"git.showPushSuccessNotification": true,
+		"editor.snippetSuggestions": "bottom",
+		"editor.suggest.preview": true,
+		"editor.suggest.selectionMode": "whenTriggerCharacter",
+		"editor.inlineSuggest.showToolbar": "always",
+		"BracketHighlighter.enableExtension": false
+	}
+}

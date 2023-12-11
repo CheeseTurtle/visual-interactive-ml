@@ -1,0 +1,694 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Visual and Interactive ML Resources</title>
+        <meta name="robots" content="noindex">
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="./theme/css/infobox.css">
+        <link rel="stylesheet" href="./theme/pagetoc.css">
+        <link rel="stylesheet" href="./theme-admonish/mdbook-admonish.css">
+        <link rel="stylesheet" href="./theme/css/catppuccin.css">
+        <link rel="stylesheet" href="./theme-catppuccin/catppuccin-admonish.css">
+        <link rel="stylesheet" href="./theme/css/adjust.css">
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "ayu" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><div>Introduction</div></li><li class="chapter-item expanded affix "><div>Quick Navigation</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">1.</strong> Overview</div></li><li class="chapter-item expanded affix "><li class="part-title">General Resources</li><li class="chapter-item expanded "><a href="gen_bg-theory.html"><strong aria-hidden="true">2.</strong> General Background/Theory Resources</a></li><li class="chapter-item expanded "><a href="gen_rec-sites.html"><strong aria-hidden="true">3.</strong> Recommended Websites</a></li><li class="chapter-item expanded affix "><li class="part-title">Specific Resources</li><li class="chapter-item expanded "><a href="res_demo.html"><strong aria-hidden="true">4.</strong> Demos and Playgrounds</a></li><li class="chapter-item expanded "><a href="res_artguide.html"><strong aria-hidden="true">5.</strong> Web articles and guides</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Tutorials</div></li><li class="chapter-item expanded affix "><li class="part-title">Resource Listings</li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Resources By Technique Category</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Resources by NN Architecture</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> Resources By Application Domain</div></li><li class="chapter-item expanded affix "><li class="part-title">Tools and Utilities</li><li class="chapter-item expanded "><a href="util_frameworks.html"><strong aria-hidden="true">10.</strong> ML Frameworks</a></li><li class="chapter-item expanded "><a href="util_libraries.html"><strong aria-hidden="true">11.</strong> ML Libraries</a></li><li class="chapter-item expanded "><a href="util_devtools.html"><strong aria-hidden="true">12.</strong> Dev Tools</a></li><li class="chapter-item expanded "><a href="util_misctools.html"><strong aria-hidden="true">13.</strong> Misc. Tools</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="latte">Latte</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="frappe">Frappé</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="macchiato">Macchiato</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mocha">Mocha</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Visual and Interactive ML Resources</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/CheeseTurtle/visual-interactive-ml" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main><div class="sidetoc"><nav class="pagetoc"></nav></div>
+
+                        <h1 id="backgroundtheory"><a class="header" href="#backgroundtheory">Background/Theory</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="recommended-websites"><a class="header" href="#recommended-websites">Recommended Websites</a></h1>
+<h2 id="articles"><a class="header" href="#articles">Articles</a></h2>
+<h3 id="distill"><a class="header" href="#distill">distill</a></h3>
+<h2 id="collections"><a class="header" href="#collections">Collections</a></h2>
+<h3 id="collections-of-interactive-things"><a class="header" href="#collections-of-interactive-things">Collections of Interactive Things</a></h3>
+<ul>
+<li>https://github.com/stared/interactive-machine-learning-list</li>
+</ul>
+<h3 id="collections-of-visuals-and-educational-graphics"><a class="header" href="#collections-of-visuals-and-educational-graphics">Collections of Visuals and Educational Graphics</a></h3>
+<ul>
+<li>https://github.com/dvgodoy/dl-visuals</li>
+</ul>
+<h4 id="the-ai-summers-deep-learning-visuals"><a class="header" href="#the-ai-summers-deep-learning-visuals">The AI Summer’s <em>Deep Learning Visuals</em></a></h4>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-head">Repository</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://github.com/The-AI-Summer/deep-learning-visuals">https://github.com/The-AI-Summer/deep-learning-visuals</a></div></div>
+</div></div>
+<p><img src="2023-12-11-14-10-26.png" alt="" /></p>
+<h4 id="dairais-ml-visuals"><a class="header" href="#dairais-ml-visuals">DAIR.AI’s <em>ML Visuals</em></a></h4>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-head">Tagline</div><div class="infobox-spacer"></div><div class="infobox-tail">ML Visuals contains figures and templates which you can reuse and customize to improve your scientific writing.</div></div>
+<div class="infobox-row"><div class="infobox-head">Repository</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://github.com/dair-ai/ml-visuals">https://github.com/dair-ai/ml-visuals</a></div></div>
+</div></div>
+<h2 id="online-books-manuals-handbooks-and-guides"><a class="header" href="#online-books-manuals-handbooks-and-guides">Online Books, Manuals, Handbooks, and Guides</a></h2>
+<h4 id="tim-r413s-deep-learning-handbook"><a class="header" href="#tim-r413s-deep-learning-handbook">Tim-R413’s Deep Learning Handbook</a></h4>
+<p>Tagline: A series of modules meant to assist in learning different areas of deep learning through interactive tutorials.</p>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-head">Repository</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://github.com/Tim-R413/Deep-Learning-Handbook">https://github.com/Tim-R413/Deep-Learning-Handbook</a></div></div>
+</div></div><div style="break-before: page; page-break-before: always;"></div><h1 id="demos-and-playgrounds"><a class="header" href="#demos-and-playgrounds">Demos and Playgrounds</a></h1>
+<h2 id="anomagram"><a class="header" href="#anomagram">Anomagram</a></h2>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-head">Tagline</div><div class="infobox-spacer"></div><div class="infobox-tail">Interactive Visualization for Autoencoders with Tensorflow.js</div></div>
+<div class="infobox-row"><div class="infobox-head">Live Demo</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://anomagram.fastforwardlabs.com/#/">https://anomagram.fastforwardlabs.com/#/</a></div></div>
+<div class="infobox-row"><div class="infobox-head">Repository</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://github.com/victordibia/anomagram">https://github.com/victordibia/anomagram</a></div></div>
+</div></div>
+<blockquote>
+<p>Anomagram is an interactive experience built with Tensorflow.js to demonstrate how deep neural networks (autoencoders) can be applied to the task of anomaly detection.</p>
+</blockquote>
+<h2 id="drlviz"><a class="header" href="#drlviz">DRLViz</a></h2>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-head">Tagline</div><div class="infobox-spacer"></div><div class="infobox-tail">Online demo of DRLViz, an interactive tool to understand decisions and memory in Deep Reinforcement Learning</div></div>
+<div class="infobox-row"><div class="infobox-head">Live Demo</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://sical.github.io/drlviz/">https://sical.github.io/drlviz/</a></div></div>
+<div class="infobox-row"><div class="infobox-head">Repository</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://github.com/sical/drlviz">https://github.com/sical/drlviz</a></div></div>
+</div></div>
+<h2 id="visualml"><a class="header" href="#visualml">VisualML</a></h2>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-head">Tagline</div><div class="infobox-spacer"></div><div class="infobox-tail">TODO</div></div>
+<div class="infobox-row"><div class="infobox-head">Live Demo</div><div class="infobox-spacer"></div><div class="infobox-tail">(multiple --see below)</div></div>
+<div class="infobox-row"><div class="infobox-head">Repository</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://github.com/dsgiitr/VisualML">https://github.com/dsgiitr/VisualML</a></div></div>
+</div></div>
+<blockquote>
+<p>Visual Machine Learning contains a set of Machine Learning and Deep Learning interactive visualisation demos for developing intuition. These demos are developed using TensorFlow.js and can be executed directly in your browser.</p>
+</blockquote>
+<p><strong>Live demo links:</strong></p>
+<ol>
+<li><a href="https://dsgiitr.github.io/ann-demo">ANN</a></li>
+<li><a href="https://dsgiitr.github.io/autoencoder-demo">Autoencoder</a></li>
+<li><a href="https://dsgiitr.github.io/logistic-regression-demo">Logistic Regression</a></li>
+<li><a href="https://dsgiitr.github.io/mnist-cnn-demo">CNN</a></li>
+<li><a href="https://dsgiitr.github.io/pca-demo">PCA</a></li>
+<li><a href="https://dsgiitr.github.io/svm-demo">SVM</a></li>
+<li><a href="https://dsgiitr.github.io/neural-style-transfer-tfjs">Neural Style Transfer</a></li>
+<li><a href="https://dsgiitr.github.io/vanishing-gradients-demo">Vanishing Gradients &amp; ReLU</a></li>
+</ol>
+<h2 id="rnn-explainer"><a class="header" href="#rnn-explainer">RNN Explainer</a></h2>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-head">Tagline</div><div class="infobox-spacer"></div><div class="infobox-tail">An interactive visualization application designed to help non-experts learn about Recurrent Neural Networks (RNNs).</div></div>
+<div class="infobox-row"><div class="infobox-head">Live demo</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://damien0x0023.github.io/rnnExplainer/">https://damien0x0023.github.io/rnnExplainer/</a></div></div>
+<div class="infobox-row"><div class="infobox-head">Repository</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://github.com/damien0x0023/rnnExplainer">https://github.com/damien0x0023/rnnExplainer</a></div></div>
+</div></div>
+<div id="admonition-warning" class="admonition admonish-warning">
+<div class="admonition-title">
+<p>Warning</p>
+<p><a class="admonition-anchor-link" href="res_demo.html#admonition-warning"></a></p>
+</div>
+<div>
+<p>(Recommendation: “try this demo with a screen which is larger than 8 inches and has a minimum resolution of 1280x720”)</p>
+</div>
+</div>
+<p>Hello.</p>
+<h2 id="attviz"><a class="header" href="#attviz">AttViz</a></h2>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-head">Tagline</div><div class="infobox-spacer"></div><div class="infobox-tail">Self attention made simple; Dissecting Transformers via attention visualization</div></div>
+<div class="infobox-row"><div class="infobox-head">Live demo</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="http://attviz.ijs.si/">http://attviz.ijs.si/</a></div></div>
+<div class="infobox-row"><div class="infobox-head">Repository</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://github.com/SkBlaz/attviz">https://github.com/SkBlaz/attviz</a></div></div>
+</div></div>
+<p><img src="2023-12-11-13-48-56.png" alt="AttViz screenshot" /></p>
+<h2 id="bertviz"><a class="header" href="#bertviz">BertViz</a></h2>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-head">Tagline</div><div class="infobox-spacer"></div><div class="infobox-tail">Visualize Attention in NLP Models</div></div>
+<div class="infobox-row"><div class="infobox-head">Live demo</div><div class="infobox-spacer"></div><div class="infobox-tail">See below</div></div>
+<div class="infobox-row"><div class="infobox-head">Repository</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://github.com/jessevig/bertviz">https://github.com/jessevig/bertviz</a></div></div>
+</div></div>
+<blockquote>
+<p>BertViz is an interactive tool for visualizing attention in Transformer language models such as BERT, GPT2, or T5. It can be run inside a Jupyter or Colab notebook through a simple Python API that supports most Huggingface models. BertViz extends the Tensor2Tensor visualization tool by Llion Jones, providing multiple views that each offer a unique lens into the attention mechanism.</p>
+</blockquote>
+<p>The repository link contains information about usage as well as several links to interactive tutorials for use in Colab.</p>
+<p><img src="https://github.com/jessevig/bertviz/blob/master/images/neuron-view-dark.gif?raw=true" alt="" />
+<img src="https://github.com/jessevig/bertviz/blob/master/images/model-view-noscroll.gif?raw=true" alt="" />
+<img src="https://github.com/jessevig/bertviz/blob/master/images/neuron-view-dark.gif?raw=true" alt="" /></p>
+<!--![](2023-12-11-13-56-07.png)![](2023-12-11-13-56-14.png)
+![](2023-12-11-13-56-20.png)-->
+<h2 id="attention-viz"><a class="header" href="#attention-viz">attention-viz</a></h2>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-head">Tagline</div><div class="infobox-spacer"></div><div class="infobox-tail">Visualizing query-key interactions in language + vision transformers</div></div>
+<div class="infobox-row"><div class="infobox-head">Live demo</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://attentionviz.com/">https://attentionviz.com/</a></div></div>
+:: Documentation:: <a href="https://catherinesyeh.github.io/attn-docs/">https://catherinesyeh.github.io/attn-docs/</a>
+<div class="infobox-row"><div class="infobox-head">Repository</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://github.com/catherinesyeh/attention-viz">https://github.com/catherinesyeh/attention-viz</a></div></div>
+</div></div>
+<blockquote>
+<p>Attention Viz is an interactive tool that visualizes global attention patterns for transformer models. To create this tool, we visualize the joint embeddings of <strong>query</strong> and <strong>key</strong> vectors.</p>
+</blockquote>
+<p><img src="2023-12-11-14-06-25.png" alt="" />
+<img src="2023-12-11-14-06-40.png" alt="" />
+<img src="2023-12-11-14-06-53.png" alt="" /></p>
+<h2 id="attentions"><a class="header" href="#attentions">attentions</a></h2>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-head">Tagline</div><div class="infobox-spacer"></div><div class="infobox-tail">An Apache 2.0 PyTorch implementation of some attentions for Deep Learning Researchers.</div></div>
+<div class="infobox-row"><div class="infobox-head">Repository</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://github.com/sooftware/attentions">https://github.com/sooftware/attentions</a></div></div>
+</div></div>
+<p><img src="2023-12-11-15-51-33.png" alt="attentions screenshot" /></p>
+<table>
+<thead>
+<tr><th colspan=2>Implementation List</th></tr>
+<tr style="font-variant: small-caps;"><th>Name</th><th>Citation</th></tr>
+</thead>
+<tbody>
+<tr><td>Additive attention</td><td><a href="https://arxiv.org/pdf/1409.0473.pdf">Bahdanau et al., 2015</a></td></tr>
+<tr><td>Dot-product attention</td><td><a href="https://arxiv.org/pdf/1508.04025.pdf">Luong et al., 2015</a></td></tr>
+<tr><td>Location-Aware (Location Sensitive) Attention</td><td><a href="http://papers.nips.cc/paper/5847-attention-based-models-for-speech-recognition.pdf">Chorowski et al., 2015</a></td></tr>
+<tr><td>Scaled Dot-Product Attention</td><td><a href="https://arxiv.org/abs/1706.03762">Vaswani et al., 2017</a></td></tr>
+<tr><td>Multi-Head Attention</td><td><a href="https://arxiv.org/abs/1706.03762">Vaswani et al., 2017</a></td></tr>
+<tr><td>Relative Multi-Head Self Attention</td><td><a href="https://arxiv.org/abs/1901.02860">ZihangDai et al., 2019</a></td></tr>
+</tbody>
+</table>
+<h2 id="cnn-explainer"><a class="header" href="#cnn-explainer">CNN Explainer</a></h2>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-head">Tagline</div><div class="infobox-spacer"></div><div class="infobox-tail">Learning Convolutional Neural Networks with Interactive Visualization;<br/>An interactive visualization system designed to help non-experts learn about Convolutional Neural Networks (CNNs)</div></div>
+<div class="infobox-row"><div class="infobox-head">Live demo</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="http://poloclub.github.io/cnn-explainer/">http://poloclub.github.io/cnn-explainer/</a></div></div>
+<div class="infobox-row"><div class="infobox-head">Repository</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://github.com/poloclub/cnn-explainer?tab=readme-ov-file">https://github.com/poloclub/cnn-explainer?tab=readme-ov-file</a></div></div>
+</div></div>
+<!--{{#embed https://youtu.be/HnWIHWFbuUQ }}-->
+<!--<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/HnWIHWFbuUQ?si=Ri26ECN1J4bvGheD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>-->
+<p><a title="Watch on YouTube" tooltip="Watch on YouTube" href="https://youtu.be/HnWIHWFbuUQ"><image src="2023-12-11-16-14-44.png"/></a></p>
+<h2 id="diffusion-explainer"><a class="header" href="#diffusion-explainer">Diffusion Explainer</a></h2>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-head">Tagline</div><div class="infobox-spacer"></div><div class="infobox-tail">Diffusion Explainer: Visual Explanation for Text-to-image Stable Diffusion</div></div>
+<div class="infobox-row"><div class="infobox-head">Live demo</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="http://poloclub.github.io/diffusion-explainer">http://poloclub.github.io/diffusion-explainer</a></div></div>
+<div class="infobox-row"><div class="infobox-head">Demo video</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://youtu.be/Zg4gxdIWDds">https://youtu.be/Zg4gxdIWDds</a></div></div>
+<div class="infobox-row"><div class="infobox-head">Research paper</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://arxiv.org/abs/2305.03509">https://arxiv.org/abs/2305.03509</a></div></div>
+<div class="infobox-row"><div class="infobox-head">Blog post</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://medium.com/@seongminleee/77b53f4f1c4">https://medium.com/@seongminleee/77b53f4f1c4</a></div></div>
+<div class="infobox-row"><div class="infobox-head">Repository</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://github.com/poloclub/diffusion-explainer">https://github.com/poloclub/diffusion-explainer</a></div></div>
+</div></div>
+<p><img src="2023-12-11-16-20-54.png" alt="Diffusion Explainer screenshot" /></p>
+<h2 id="wizmap"><a class="header" href="#wizmap">Wizmap</a></h2>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-head">Tagline</div><div class="infobox-spacer"></div><div class="infobox-tail">Explore and interpret large embeddings in your browser with interactive visualization! 📍</div></div>
+<div class="infobox-row"><div class="infobox-head">Live demo</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://poloclub.github.io/wizmap">https://poloclub.github.io/wizmap</a></div></div>
+<div class="infobox-row"><div class="infobox-head">Demo video</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://youtu.be/8fJG87QVceQ">https://youtu.be/8fJG87QVceQ</a></div></div>
+<div class="infobox-row"><div class="infobox-head">Research paper</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://arxiv.org/abs/2306.09328">https://arxiv.org/abs/2306.09328</a></div></div>
+<div class="infobox-row"><div class="infobox-head">Repository</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://github.com/poloclub/wizmap">https://github.com/poloclub/wizmap</a></div></div>
+</div></div>
+<p>The repository includes an <a href="https://github.com/poloclub/wizmap/blob/main/example/imdb.ipynb">interactive notebook</a> containing instructions for using your own embeddings with WizMap.</p>
+<blockquote>
+<p>WizMap is a scalable interactive visualization tool to help you easily explore large machine learning embeddings. With a novel multi-resolution embedding summarization method and a familiar map-like interaction design, WizMap allows you to navigate and interpret embedding spaces with ease.</p>
+</blockquote>
+<p><img src="2023-12-11-16-33-42.png" alt="WizMap features image" /></p>
+<table>
+  <tbody><tr>
+    <td><a href="https://poloclub.github.io/wizmap/?dataset=diffusiondb" rel="nofollow"><img src="https://camo.githubusercontent.com/392dbe96b9a6430aaaf070cb43ac9618f9d6dec7d0c67fc26b3f758c36396615/68747470733a2f2f692e696d6775722e636f6d2f6854637533724a2e6a7067" width="100%" data-canonical-src="https://i.imgur.com/hTcu3rJ.jpg" style="max-width: 100%;"></a></td>
+    <td><a href="https://poloclub.github.io/wizmap/?dataset=diffusiondb" rel="nofollow"><img src="https://camo.githubusercontent.com/d66c9eb54ce19ca476b4ad241ba3c11a233728cc2be0020b80efd42706a2a288/68747470733a2f2f692e696d6775722e636f6d2f4159554548577a2e706e67" width="100%" data-canonical-src="https://i.imgur.com/AYUEHWz.png" style="max-width: 100%;"></a></td>
+    <td><a href="https://poloclub.github.io/wizmap/?dataset=diffusiondb" rel="nofollow"><img src="https://camo.githubusercontent.com/088186679392ef08784031a7b2c9a4d21e478fee1da6965ab31bd957018bb7ce/68747470733a2f2f692e696d6775722e636f6d2f6979427a7148512e706e67" width="100%" data-canonical-src="https://i.imgur.com/iyBzqHQ.png" style="max-width: 100%;"></a></td>
+  </tr>
+  <tr></tr>
+  <tr>
+    <td><a href="https://poloclub.github.io/wizmap/?dataset=diffusiondb" rel="nofollow">DiffusionDB Prompts + Images</a></td>
+    <td><a href="https://poloclub.github.io/wizmap/?dataset=acl-abstracts" rel="nofollow">ACL Paper Abstracts</a></td>
+    <td><a href="https://poloclub.github.io/wizmap/?dataset=imdb" rel="nofollow">IMDB Review Comments</a></td>
+  </tr>
+  <tr></tr>
+  <tr>
+    <td>1.8M text + 1.8M images</td>
+    <td>63k text</td>
+    <td>25k text</td>
+  </tr>
+  <tr></tr>
+  <tr>
+    <td><code>CLIP</code> Embedding</td>
+    <td><code>all-MiniLM-L6-v2</code> Embedding</td>
+    <td><code>all-MiniLM-L6-v2</code> Embedding</td>
+  </tr>
+  <tr></tr>
+</tbody></table>
+<h2 id="ganlab"><a class="header" href="#ganlab">GanLab</a></h2>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-head">Tagline</div><div class="infobox-spacer"></div><div class="infobox-tail">GAN Lab: An Interactive, Visual Experimentation Tool for Generative Adversarial Networks</div></div>
+<div class="infobox-row"><div class="infobox-head">Live demo</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://poloclub.github.io/ganlab/">https://poloclub.github.io/ganlab/</a></div></div>
+<div class="infobox-row"><div class="infobox-head">Repository</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://github.com/poloclub/ganlab?tab=readme-ov-file">https://github.com/poloclub/ganlab?tab=readme-ov-file</a></div></div>
+</div></div>
+<p><img src="2023-12-11-16-36-42.png" alt="GanLab screenshot" /></p>
+<h2 id="timbertrek"><a class="header" href="#timbertrek">TimberTrek</a></h2>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-head">Tagline</div><div class="infobox-spacer"></div><div class="infobox-tail">Explore and compare 1K+ accurate decision trees in your browser!</div></div>
+<div class="infobox-row"><div class="infobox-head">Live demo</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://poloclub.github.io/timbertrek">https://poloclub.github.io/timbertrek</a></div></div>
+<div class="infobox-row"><div class="infobox-head">Demo video</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://youtu.be/3eGqTmsStJM">https://youtu.be/3eGqTmsStJM</a></div></div>
+<div class="infobox-row"><div class="infobox-head">Conference Talk</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://youtu.be/l1mr9z1TuAk">https://youtu.be/l1mr9z1TuAk</a></div></div>
+<div class="infobox-row"><div class="infobox-head">Research paper</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://arxiv.org/abs/2209.09227">https://arxiv.org/abs/2209.09227</a></div></div>
+<div class="infobox-row"><div class="infobox-head">Colab notebook</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://github.com/ubc-systopia/treeFarms/blob/main/treefarms/tutorial.ipynb">https://github.com/ubc-systopia/treeFarms/blob/main/treefarms/tutorial.ipynb</a></div></div>
+<div class="infobox-row"><div class="infobox-head">Repository</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://github.com/poloclub/timbertrek">https://github.com/poloclub/timbertrek</a></div></div>
+</div></div>
+<p><img src="2023-12-11-16-40-26.png" alt="TimberTrek screenshot" /></p>
+<h2 id="gam-coach"><a class="header" href="#gam-coach">GAM Coach</a></h2>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-head">Tagline</div><div class="infobox-spacer"></div><div class="infobox-tail">An interactive tool to help everyday users discover actionable strategies to obtain desired AI decisions.</div></div>
+<div class="infobox-row"><div class="infobox-head">Live demo</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://poloclub.github.io/gam-coach/">https://poloclub.github.io/gam-coach/</a></div></div>
+<div class="infobox-row"><div class="infobox-head">Demo video</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://youtu.be/ubacP34H9XE">https://youtu.be/ubacP34H9XE</a></div></div>
+<div class="infobox-row"><div class="infobox-head">Research paper</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://arxiv.org/abs/2302.14165">https://arxiv.org/abs/2302.14165</a></div></div>
+<div class="infobox-row"><div class="infobox-head">Repository</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://github.com/poloclub/gam-coach">https://github.com/poloclub/gam-coach</a></div></div>
+</div></div>
+<p><img src="!%5BGAM%20Coach%20screenshot%5D(2023-12-11-16-42-27.png).png" alt="GAM Coach screenshot" /></p>
+<p><img src="https://user-images.githubusercontent.com/15007159/230276843-f82102ec-ad5e-425e-a9e5-6f62127d0ee6.gif" alt="GAM Coach GIF" /></p>
+<h2 id="interactive-classification"><a class="header" href="#interactive-classification">Interactive Classification</a></h2>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-head">Tagline</div><div class="infobox-spacer"></div><div class="infobox-tail">Interactive Classification for Deep Learning Interpretation</div></div>
+<div class="infobox-row"><div class="infobox-head">Live demo</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://cabreraalex.github.io/interactive-classification/">https://cabreraalex.github.io/interactive-classification/</a></div></div>
+<div class="infobox-row"><div class="infobox-head">Repository</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://github.com/poloclub/interactive-classification">https://github.com/poloclub/interactive-classification</a></div></div>
+</div></div>
+<p>The live demo includes a “tour”-style tutorial.</p>
+<blockquote>
+<p>Interactive Classification allows you to explore how computers see by modifying images.</p>
+</blockquote>
+<p><a href="https://youtu.be/llub5GcOF6w" rel="nofollow" title="YouTube video demo" tooltip="YouTube video demo"><img src="2023-12-11-16-47-25.png" alt="YouTube video demo" style="max-width: 100%;"></a></p>
+<p><img src="2023-12-11-16-50-34.png" alt="Interactive Classification screenshot" /></p>
+<h2 id="webshap"><a class="header" href="#webshap">WebSHAP</a></h2>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-head">Tagline</div><div class="infobox-spacer"></div><div class="infobox-tail">JavaScript library to explain any machine learning models anywhere!</div></div>
+<div class="infobox-row"><div class="infobox-head">Live Demo</div><div class="infobox-spacer"></div><div class="infobox-tail">(See below.)</div></div>
+<div class="infobox-row"><div class="infobox-head">Library documentation</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="http://poloclub.github.io/webshap/doc">http://poloclub.github.io/webshap/doc</a></div></div>
+<div class="infobox-row"><div class="infobox-head">Research paper</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://arxiv.org/abs/2303.09545">https://arxiv.org/abs/2303.09545</a></div></div>
+<div class="infobox-row"><div class="infobox-head">Repository</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://github.com/poloclub/webshap">https://github.com/poloclub/webshap</a></div></div>
+</div></div>
+<p><img src="https://user-images.githubusercontent.com/15007159/225991959-c2b10d8b-be24-4f5c-a6f4-2b9f5876095c.gif" alt="" /></p>
+<p><strong>Live Demo List</strong> (see Repository README.md for more info)</p>
+<ol>
+<li><a href="https://poloclub.github.io/webshap/?model=tabular">Financial ML model for predictive classification</a>
+<img src="2023-12-11-16-55-16.png" alt="" /></li>
+<li><a href="https://poloclub.github.io/webshap/?model=image">Convolutional NN for image classification</a> 
+<img src="2023-12-11-16-55-41.png" alt="" /></li>
+<li><a href="https://poloclub.github.io/webshap/?model=text">Transformer-based text classifier</a>
+<img src="2023-12-11-16-56-43.png" alt="" /></li>
+</ol>
+<h2 id="bluff"><a class="header" href="#bluff">Bluff</a></h2>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-head">Tagline</div><div class="infobox-spacer"></div><div class="infobox-tail">Bluff: Interactively Deciphering Adversarial Attacks on Deep Neural Networks</div></div>
+<div class="infobox-row"><div class="infobox-head">Live Demo</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://poloclub.github.io/bluff/">https://poloclub.github.io/bluff/</a></div></div>
+<div class="infobox-row"><div class="infobox-head">Demo video</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://youtu.be/b6PHyYnassc">https://youtu.be/b6PHyYnassc</a></div></div>
+<div class="infobox-row"><div class="infobox-head">Research paper</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://arxiv.org/pdf/2009.02608.pdf">https://arxiv.org/pdf/2009.02608.pdf</a></div></div>
+<div class="infobox-row"><div class="infobox-head">Repository</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://github.com/poloclub/bluff">https://github.com/poloclub/bluff</a></div></div>
+</div></div>
+![Bluff screenshot](2023-12-11-17-01-37.png)<div style="break-before: page; page-break-before: always;"></div><h1 id="web-articles-and-guides"><a class="header" href="#web-articles-and-guides">Web articles and guides</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="ml-frameworks"><a class="header" href="#ml-frameworks">ML Frameworks</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="ml-libraries"><a class="header" href="#ml-libraries">ML Libraries</a></h1>
+<h2 id="automl"><a class="header" href="#automl">AutoML</a></h2>
+<h3 id="python"><a class="header" href="#python">Python</a></h3>
+<h4 id="optuna"><a class="header" href="#optuna">Optuna</a></h4>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-head">Documentation</div><div class="infobox-spacer"></div><div class="infobox-tail">abcdefg</div></div>
+<div class="infobox-row"><div class="infobox-head">Tagline</div><div class="infobox-spacer"></div><div class="infobox-tail">TODO</div></div>
+<div class="infobox-row"><div class="infobox-head">Documentation</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://optuna.readthedocs.io/en/stable/">https://optuna.readthedocs.io/en/stable/</a></div></div>
+</div></div>
+<h4 id="nni"><a class="header" href="#nni">NNI</a></h4>
+<p>(TODO)</p>
+<h4 id="hyperopt"><a class="header" href="#hyperopt">Hyperopt</a></h4>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-head">Tagline</div><div class="infobox-spacer"></div><div class="infobox-tail">TODO</div></div>
+<div class="infobox-row"><div class="infobox-head">Website</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://hyperopt.github.io/hyperopt/">https://hyperopt.github.io/hyperopt/</a></div></div>
+</div></div>
+<pre><code class="language-py">import torch;
+import torchaudio as ta;
+
+print(&quot;Hello&quot;)
+</code></pre>
+<h4 id="auto-pytorch"><a class="header" href="#auto-pytorch">Auto-PyTorch</a></h4>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-head">Website</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://github.com/automl/Auto-PyTorch">https://github.com/automl/Auto-PyTorch</a></div></div>
+</div></div>
+<h3 id="flaml"><a class="header" href="#flaml">FLAML</a></h3>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-head">Website</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://github.com/microsoft/FLAML">https://github.com/microsoft/FLAML</a></div></div>
+</div></div>
+<h4 id="featuretools"><a class="header" href="#featuretools">Featuretools</a></h4>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-head">Tagline</div><div class="infobox-spacer"></div><div class="infobox-tail">An open source python framework for automated feature engineering</div></div>
+<div class="infobox-row"><div class="infobox-head">Website</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://www.featuretools.com/">https://www.featuretools.com/</a></div></div>
+</div></div>
+<blockquote>
+<p>Featuretools automatically creates features from temporal and relational datasets</p>
+</blockquote>
+<h4 id="deephyper"><a class="header" href="#deephyper">DeepHyper</a></h4>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-head">Tagline</div><div class="infobox-spacer"></div><div class="infobox-tail">Distributed Neural Architecture and Hyperparameter Optimization for Machine Learning</div></div>
+<div class="infobox-row"><div class="infobox-head">Website</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://deephyper.readthedocs.io/en/latest/">https://deephyper.readthedocs.io/en/latest/</a></div></div>
+</div></div>
+<blockquote>
+<p>DeepHyper is a powerful Python package for automating machine learning tasks, particularly focused on optimizing hyperparameters, searching for optimal neural architectures, and quantifying uncertainty through the deep ensembles. With DeepHyper, users can easily perform these tasks on a single machine or distributed across multiple machines, making it ideal for use in a variety of environments. Whether you’re a beginner looking to optimize your machine learning models or an experienced data scientist looking to streamline your workflow, DeepHyper has something to offer. So why wait? Start using DeepHyper today and take your machine learning skills to the next level!</p>
+</blockquote>
+<h4 id="autogluon"><a class="header" href="#autogluon">AutoGluon</a></h4>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-head">Tagline</div><div class="infobox-spacer"></div><div class="infobox-tail">AutoML for Image, Text, Time Series, and Tabular Data</div></div>
+<div class="infobox-row"><div class="infobox-head">Website</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://auto.gluon.ai/stable/index.html">https://auto.gluon.ai/stable/index.html</a></div></div>
+</div></div>
+<h4 id="adanet"><a class="header" href="#adanet">AdaNet</a></h4>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-head">Tagline</div><div class="infobox-spacer"></div><div class="infobox-tail">AdaNet is a TensorFlow framework for fast and flexible AutoML with learning guarantees.</div></div>
+<div class="infobox-row"><div class="infobox-head">Website</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://adanet.readthedocs.io/en/v0.9.0/">https://adanet.readthedocs.io/en/v0.9.0/</a></div></div>
+</div></div>
+<hr />
+<h2 id="time-series"><a class="header" href="#time-series">Time series</a></h2>
+<h3 id="python-1"><a class="header" href="#python-1">Python</a></h3>
+<h4 id="temporian"><a class="header" href="#temporian">Temporian</a></h4>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-head">Tagline</div><div class="infobox-spacer"></div><div class="infobox-tail">Temporian is to temporal data what Pandas is to tabular data.</div></div>
+<div class="infobox-row"><div class="infobox-head">Website</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://temporian.readthedocs.io/en/stable/">https://temporian.readthedocs.io/en/stable/</a></div></div>
+</div></div>
+<h4 id="functime"><a class="header" href="#functime">functime</a></h4>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-head">Website</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://docs.functime.ai/">https://docs.functime.ai/</a></div></div>
+</div></div>
+<h4 id="tsflex"><a class="header" href="#tsflex">tsflex</a></h4>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-head">Tagline</div><div class="infobox-spacer"></div><div class="infobox-tail">flexible time-series operations</div></div>
+<div class="infobox-row"><div class="infobox-head">Website</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://predict-idlab.github.io/tsflex/">https://predict-idlab.github.io/tsflex/</a></div></div>
+</div></div>
+<blockquote>
+<p>tsflex … [is] a sequence first Python toolkit for processing &amp; feature extraction, making few assumptions about input data.
+This makes tsflex suitable for use-cases such as inference on streaming data, performing operations on irregularly sampled series, a holistic approach for operating on multivariate asynchronous data, and dealing with time-gaps.</p>
+</blockquote>
+<h4 id="gluonts"><a class="header" href="#gluonts">GluonTS</a></h4>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-head">Tagline</div><div class="infobox-spacer"></div><div class="infobox-tail">GluonTS is a Python package for probabilistic time series modeling, focusing on deep learning based models, based on PyTorch and MXNet.</div></div>
+<div class="infobox-row"><div class="infobox-head">Website</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://ts.gluon.ai/stable/index.html">https://ts.gluon.ai/stable/index.html</a></div></div>
+</div></div>
+<h4 id="pytorch-forecasting"><a class="header" href="#pytorch-forecasting">PyTorch-Forecasting</a></h4>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-head">Website</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://pytorch-forecasting.readthedocs.io/en/stable/">https://pytorch-forecasting.readthedocs.io/en/stable/</a></div></div>
+</div></div>
+<hr />
+<h2 id="streaming-ml"><a class="header" href="#streaming-ml">Streaming ML</a></h2>
+<h4 id="river"><a class="header" href="#river">River</a></h4>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-head">Tagline</div><div class="infobox-spacer"></div><div class="infobox-tail">River is a Python library for online machine learning. It aims to be the most user-friendly library for doing machine learning on streaming data. River is the result of a merger between creme and scikit-multiflow.</div></div>
+<div class="infobox-row"><div class="infobox-head">Website</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://riverml.xyz/latest/">https://riverml.xyz/latest/</a></div></div>
+</div></div>
+<div id="admonition-info" class="admonition admonish-info">
+<div class="admonition-title">
+<p>Info</p>
+<p><a class="admonition-anchor-link" href="util_libraries.html#admonition-info"></a></p>
+</div>
+<div>
+<p>See also <strong><code>deep-river</code></strong> at <a href="https://github.com/online-ml/deep-river">https://github.com/online-ml/deep-river</a>: “deep-river is a Python library for online deep learning. deep-river’s ambition is to enable online machine learning for neural networks. It combines the river API with the capabilities of designing neural networks based on PyTorch.”</p>
+</div>
+</div>
+<hr />
+<h2 id="plotting-and-data-visualization"><a class="header" href="#plotting-and-data-visualization">Plotting and Data Visualization</a></h2>
+<h3 id="python-2"><a class="header" href="#python-2">Python</a></h3>
+<h4 id="seaborn"><a class="header" href="#seaborn"><code>seaborn</code></a></h4>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-head">Website</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://seaborn.pydata.org">https://seaborn.pydata.org</a></div></div>
+<div class="infobox-row"><div class="infobox-head">Showcase</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://seaborn.pydata.org/examples/index.html">https://seaborn.pydata.org/examples/index.html</a></div></div>
+<div class="infobox-row"><div class="infobox-head">Tutorial</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://seaborn.pydata.org/tutorial.html">https://seaborn.pydata.org/tutorial.html</a></div></div>
+</div></div>
+<h4 id="perspective"><a class="header" href="#perspective">Perspective</a></h4>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-head">Website</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://perspective.finos.org/">https://perspective.finos.org/</a></div></div>
+</div></div>
+<blockquote>
+<p>Perspective is an interactive analytics and data visualization component, which is especially well-suited for large and/or streaming datasets. Use it to create user-configurable reports, dashboards, notebooks and applications, then deploy stand-alone in the browser, or in concert with Python and/or Jupyterlab.</p>
+</blockquote>
+<hr />
+<h2 id="scikit-learn-alternatives"><a class="header" href="#scikit-learn-alternatives"><code>scikit-learn</code> alternatives</a></h2>
+<h4 id="pycaret"><a class="header" href="#pycaret">PyCaret</a></h4>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-head">Tagline</div><div class="infobox-spacer"></div><div class="infobox-tail">PyCaret is an open-source, low-code machine learning library in Python that automates machine learning workflows.</div></div>
+<div class="infobox-row"><div class="infobox-head">Website</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://pycaret.org/">https://pycaret.org/</a></div></div>
+</div></div><div style="break-before: page; page-break-before: always;"></div><h1 id="dev-tools"><a class="header" href="#dev-tools">Dev Tools</a></h1>
+<h2 id="nn-visualization-tools"><a class="header" href="#nn-visualization-tools">NN Visualization Tools</a></h2>
+<h4 id="nn_vis"><a class="header" href="#nn_vis">nn_vis</a></h4>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-head">Website</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://github.com/julrog/nn_vis">https://github.com/julrog/nn_vis</a></div></div>
+</div></div>
+<h4 id="collection-of-nn-architecture-design-tools"><a class="header" href="#collection-of-nn-architecture-design-tools">Collection of NN Architecture Design Tools</a></h4>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-head">Tagline</div><div class="infobox-spacer"></div><div class="infobox-tail">Tools to Design or Visualize Architecture of Neural Network</div></div>
+<div class="infobox-row"><div class="infobox-head">Repository</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://github.com/ashishpatel26/Tools-to-Design-or-Visualize-Architecture-of-Neural-Network">https://github.com/ashishpatel26/Tools-to-Design-or-Visualize-Architecture-of-Neural-Network</a></div></div>
+</div></div><div style="break-before: page; page-break-before: always;"></div><h1 id="misc-tools"><a class="header" href="#misc-tools">Misc. Tools</a></h1>
+<h2 id="data-science-tools"><a class="header" href="#data-science-tools">Data Science Tools</a></h2>
+<h3 id="notebook-tools"><a class="header" href="#notebook-tools">Notebook Tools</a></h3>
+<h4 id="quarto"><a class="header" href="#quarto">Quarto</a></h4>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-head">Website</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://www.quarto.org">https://www.quarto.org</a></div></div>
+</div></div>
+<h2 id="diagrams"><a class="header" href="#diagrams">Diagrams</a></h2>
+<h3 id="markup-languages"><a class="header" href="#markup-languages">Markup Languages</a></h3>
+<h4 id="d2"><a class="header" href="#d2">D2</a></h4>
+<h4 id="svgbob"><a class="header" href="#svgbob">svgbob</a></h4>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-head">Website</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://ivanceras.github.io/svgbob-editor/">https://ivanceras.github.io/svgbob-editor/</a></div></div>
+</div></div>
+<blockquote>
+<p>Svgbob is a diagramming model which uses a set of typing characters to approximate the intended shape. It uses a combination of characters which are readily available on your keyboards.</p>
+<p>What can it do?</p>
+<ul>
+<li>Basic shapes</li>
+<li>Quick logo scribbles</li>
+<li>Even unicode box drawing characters are supported</li>
+<li>Circle, quarter arcs, half circles, 3/4 quarter arcs</li>
+<li>Grids</li>
+<li>Graphics Diagram</li>
+<li>CJK characters</li>
+<li>Sequence Diagrams</li>
+<li>Plot diagrams</li>
+<li>Railroad diagrams</li>
+<li>Statistical charts</li>
+<li>Flow charts</li>
+<li>Block diagrams</li>
+<li>Mindmaps</li>
+<li>It can do complex stuff such as circuit diagrams</li>
+<li>Latest addition: Styling of tagged shapes</li>
+</ul>
+</blockquote>
+<h3 id="diagram-tools"><a class="header" href="#diagram-tools">Diagram Tools</a></h3>
+<h4 id="text-to-diagramcom"><a class="header" href="#text-to-diagramcom">text-to-diagram.com</a></h4>
+<h4 id="kroki"><a class="header" href="#kroki">Kroki</a></h4>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+        <script src="ace.js"></script>
+        <script src="editor.js"></script>
+        <script src="mode-rust.js"></script>
+        <script src="theme-dawn.js"></script>
+        <script src="theme-tomorrow_night.js"></script>
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="./theme/pagetoc.js"></script>
+
+        <script>
+        window.addEventListener('load', function() {
+            MathJax.Hub.Register.StartupHook('End', function() {
+                window.setTimeout(window.print, 100);
+            });
+        });
+        </script>
+
+    </div>
+    </body>
+</html>

@@ -1,0 +1,301 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Misc. Tools - Visual and Interactive ML Resources</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="./theme/css/infobox.css">
+        <link rel="stylesheet" href="./theme/pagetoc.css">
+        <link rel="stylesheet" href="./theme-admonish/mdbook-admonish.css">
+        <link rel="stylesheet" href="./theme/css/catppuccin.css">
+        <link rel="stylesheet" href="./theme-catppuccin/catppuccin-admonish.css">
+        <link rel="stylesheet" href="./theme/css/adjust.css">
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "ayu" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><div>Introduction</div></li><li class="chapter-item expanded affix "><div>Quick Navigation</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">1.</strong> Overview</div></li><li class="chapter-item expanded affix "><li class="part-title">General Resources</li><li class="chapter-item expanded "><a href="gen_bg-theory.html"><strong aria-hidden="true">2.</strong> General Background/Theory Resources</a></li><li class="chapter-item expanded "><a href="gen_rec-sites.html"><strong aria-hidden="true">3.</strong> Recommended Websites</a></li><li class="chapter-item expanded affix "><li class="part-title">Specific Resources</li><li class="chapter-item expanded "><a href="res_demo.html"><strong aria-hidden="true">4.</strong> Demos and Playgrounds</a></li><li class="chapter-item expanded "><a href="res_artguide.html"><strong aria-hidden="true">5.</strong> Web articles and guides</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Tutorials</div></li><li class="chapter-item expanded affix "><li class="part-title">Resource Listings</li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Resources By Technique Category</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Resources by NN Architecture</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> Resources By Application Domain</div></li><li class="chapter-item expanded affix "><li class="part-title">Tools and Utilities</li><li class="chapter-item expanded "><a href="util_frameworks.html"><strong aria-hidden="true">10.</strong> ML Frameworks</a></li><li class="chapter-item expanded "><a href="util_libraries.html"><strong aria-hidden="true">11.</strong> ML Libraries</a></li><li class="chapter-item expanded "><a href="util_devtools.html"><strong aria-hidden="true">12.</strong> Dev Tools</a></li><li class="chapter-item expanded "><a href="util_misctools.html" class="active"><strong aria-hidden="true">13.</strong> Misc. Tools</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="latte">Latte</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="frappe">Frappé</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="macchiato">Macchiato</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mocha">Mocha</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Visual and Interactive ML Resources</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/CheeseTurtle/visual-interactive-ml" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/CheeseTurtle/visual-interactive-ml/edit/main/src/util_misctools.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main><div class="sidetoc"><nav class="pagetoc"></nav></div>
+
+                        <h1 id="misc-tools"><a class="header" href="#misc-tools">Misc. Tools</a></h1>
+<h2 id="data-science-tools"><a class="header" href="#data-science-tools">Data Science Tools</a></h2>
+<h3 id="notebook-tools"><a class="header" href="#notebook-tools">Notebook Tools</a></h3>
+<h4 id="quarto"><a class="header" href="#quarto">Quarto</a></h4>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-head">Website</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://www.quarto.org">https://www.quarto.org</a></div></div>
+</div></div>
+<h2 id="diagrams"><a class="header" href="#diagrams">Diagrams</a></h2>
+<h3 id="markup-languages"><a class="header" href="#markup-languages">Markup Languages</a></h3>
+<h4 id="d2"><a class="header" href="#d2">D2</a></h4>
+<h4 id="svgbob"><a class="header" href="#svgbob">svgbob</a></h4>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-head">Website</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://ivanceras.github.io/svgbob-editor/">https://ivanceras.github.io/svgbob-editor/</a></div></div>
+</div></div>
+<blockquote>
+<p>Svgbob is a diagramming model which uses a set of typing characters to approximate the intended shape. It uses a combination of characters which are readily available on your keyboards.</p>
+<p>What can it do?</p>
+<ul>
+<li>Basic shapes</li>
+<li>Quick logo scribbles</li>
+<li>Even unicode box drawing characters are supported</li>
+<li>Circle, quarter arcs, half circles, 3/4 quarter arcs</li>
+<li>Grids</li>
+<li>Graphics Diagram</li>
+<li>CJK characters</li>
+<li>Sequence Diagrams</li>
+<li>Plot diagrams</li>
+<li>Railroad diagrams</li>
+<li>Statistical charts</li>
+<li>Flow charts</li>
+<li>Block diagrams</li>
+<li>Mindmaps</li>
+<li>It can do complex stuff such as circuit diagrams</li>
+<li>Latest addition: Styling of tagged shapes</li>
+</ul>
+</blockquote>
+<h3 id="diagram-tools"><a class="header" href="#diagram-tools">Diagram Tools</a></h3>
+<h4 id="text-to-diagramcom"><a class="header" href="#text-to-diagramcom">text-to-diagram.com</a></h4>
+<h4 id="kroki"><a class="header" href="#kroki">Kroki</a></h4>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="util_devtools.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="util_devtools.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+        <script src="ace.js"></script>
+        <script src="editor.js"></script>
+        <script src="mode-rust.js"></script>
+        <script src="theme-dawn.js"></script>
+        <script src="theme-tomorrow_night.js"></script>
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="./theme/pagetoc.js"></script>
+
+
+    </div>
+    </body>
+</html>

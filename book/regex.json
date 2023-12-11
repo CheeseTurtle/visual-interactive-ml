@@ -1,0 +1,27 @@
+[
+    {
+        "pattern" : "``collapse:(?P<title>([^\n])*)\n(?P<content>(?s:.)*)\n``",
+        "template" : "<details>\n<summary>${title}</summary>\n<div class='collapsed'>\n${content}\n</div>\n</details>"
+    },
+    {
+        "pattern": "==(?P<c>.+?)==",
+        "template": "<mark>$c</mark>"
+    },
+    {
+        "pattern": "(?ms:^::[ \\t](?<head>[^`:\\r\\n]+):[ \\t]+(?<tail>[^\\s`]+(?:(?:(?:[\\s&&[^`\\r\\n]]+|`{1,2})[^\\s`]+)*))\\s*$)",
+        "template": "<div class=\"infobox-row\"><div class=\"infobox-head\">$head</div><div class=\"infobox-spacer\"></div><div class=\"infobox-tail\">$tail</div></div>"
+    },
+    {
+        "pattern": "(?ms:^```info$\\s?*(?<contents>^.+?$\\s*?)??^```$)",
+        "template": "<div class=\"infobox-wrapper\"><div class=\"infobox\">\r\n$contents\r\n</div></div>"
+    },
+    {
+        "pattern": "<([A-z0-9\\.]+?://[^\\s>]+)>",
+        "template": "<a href=\"$1\">$1</a>"
+    },
+    {
+        "pattern": "\\[[ \\t]*([A-z0-9\\.]+://\\S+)[ \\t]*\\]\\(([^)\\r\\n]+)\\)",
+        "template": "<a href=\"$1\">$2</a>"
+    }
+]
+
