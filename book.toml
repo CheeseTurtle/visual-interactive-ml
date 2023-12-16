@@ -74,11 +74,21 @@ renderer = ["html"]
 # swift = { label = "Swift code snippet", color = "skyblue" }
 
 [preprocessors.inline-highlighting]
+after=["regex"]
 default-language = "py"
 
 [preprocessor.admonish]
 command = "mdbook-admonish"
 assets_version = "3.0.1" # do not edit: managed by `mdbook-admonish install`
+# on_failure="continue"
+
+[preprocessor.admonish.default]
+collapsible = false
+
+
+# This allows mdbook test to find and test rust examples within admonish blocks.
+[preprocessor.admonish.renderer.test]
+render_mode = "strip"
 
 [preprocessor.catppuccin]
 assets_version = "2.1.0"     # DO NOT EDIT: Managed by `mdbook-catppuccin install`
@@ -103,8 +113,11 @@ preferred-dark-theme = "ayu"
 curly-quotes = true
 mathjax-support = true
 copy-fonts = true
-additional-css = ['./theme/css/infobox.css','./theme/pagetoc.css','./theme-admonish/mdbook-admonish.css', './theme/css/catppuccin.css', './theme-catppuccin/catppuccin-admonish.css', './theme/css/adjust.css']#, '.\book\css\mdbook-admonish.css']
-additional-js  = ['./theme/pagetoc.js']
+# './theme/fotorama.css', './theme/css/photoswipe.css', './magnific-popup.css', 
+additional-css = ['./theme/css/infobox.css','./theme/pagetoc.css','./theme-admonish/mdbook-admonish.css', './theme/css/catppuccin.css', './theme-catppuccin/catppuccin-admonish.css', './theme/css/spotlight.css', './theme/css/adjust.css','./theme/bulma.min.css']#, '.\book\css\mdbook-admonish.css']
+# './theme/zepto.js', './theme/photoswipe.esm.js', './theme/photoswipe-lightbox.esm.js', 
+# './theme/jquery.min.js', './theme/fotorama.min.js',
+additional-js  = ['./theme/zepto.js', './theme/pagetoc.js', './theme/book2.js']
 no-section-label = false
 git-repository-url = "https://github.com/CheeseTurtle/visual-interactive-ml"
 git-repository-icon = "fa-github" # "fa-code-fork"
@@ -173,4 +186,16 @@ editable = true
     # {
     #     "pattern": "(?m:```info\\b(?<nl>\\r?\\n)$(?:(?P<head>[\\S&&^:]+):\\s*(?P<tail>[^\\r\\n`]+)\\r?\\n$)+?^```)",
     #     "template": "($head): [$tail]$nl"
+    # }
+
+    # {
+    #     "pattern": "(?m:^(?<blk>```|~~~)admonish(?<xtr>[^\\r\\n]*)(?<nl>$\\s*)^:: !\\[(?<alt>[^\\s\\]]*)\\]\\((?<src>[^\\)]+)\\)$\\s*^:: //$\\s*^(?<cont>[^~]*?)$\\s*(?:```|~~~)$)",
+    #     "template": "$1admonish$2$3\r\n![$alt]($src){.split-left}<br/>$cont{.split-right}\r\n$1\r\n"
+    # }
+
+
+    # ,
+    # {
+    #     "pattern": "(?ms:^```admonish([^\\r\\n]+)(?<nl>$\\s*)^::[\\ \\t]+(?<left>\\S+[^\\r\\n]+\\S+)[\\ \\t]*$\\s*^:: //$\\s*^(?<right>(?:`{1,2}[^`]|[^`]+?)+?)$\\s*^```$)",
+    #     "template": "```admonish$1$2$left{.split-left}<br/>$right{.split-right}\r\n```\r\n"
     # }

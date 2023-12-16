@@ -1,8 +1,13 @@
 
+
+/*@import "https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css";*/
+
 /*@import 'variables.css'; */ /*for some reason cannot be found*/
 
 
-
+body nav.sidebar {
+    font-family: var(--header-font);
+}
 
 
 body>div#body-container {
@@ -29,6 +34,10 @@ nav.sidebar#sidebar {
     max-width: 2.5vw;
 }
 
+div.sidetoc {
+    background: none;
+}
+
 @media only screen and (min-width:1400px) {
     div.sidetoc {
         order: 3;
@@ -45,21 +54,24 @@ nav.sidebar#sidebar {
         padding: 0;
         padding-inline-start: 0 !important;
     }
-}
 
-div.sidetoc {
-    background: none;
+    div.sidetoc>nav.pagetoc {
+        /*display: flex;
+        flex-flow: column nowrap;*/
+        /*position: -webkit-sticky !important;*/
+        position: fixed;
+        left: unset !important;
+        right: calc(3vw);
+        max-width: 14vw;
+    }
 }
 
 div.sidetoc>nav.pagetoc {
-    /*display: flex;
-    flex-flow: column nowrap;*/
-    /*position: -webkit-sticky !important;*/
-    position: fixed;
-    left: unset !important;
-    right: calc(3vw);
-    max-width: 14vw;
-    background: color-mix(in srgb, var(--sidebar-bg) 75%, transparent);
+    display: flex;
+    flex-flow: column nowrap;
+    /*background: color-mix(in srgb, var(--sidebar-bg) 75%, transparent);*/
+    background: color-mix(in srgb, var(--sidebar-bg) 50%, transparent);
+    backdrop-filter: blur(10px);
     padding-left: 0.5rem;
     padding-right: 1rem;
 
@@ -68,6 +80,7 @@ div.sidetoc>nav.pagetoc {
 
 .rust div.sidetoc>nav.pagetoc {
     background: color-mix(in srgb, var(--sidebar-bg) 60%, black 25%);
+    backdrop-filter: blur(10px);
 }
 
 div.sidetoc>nav.pagetoc>a{
@@ -95,26 +108,62 @@ div.content#content>main {
 }
 
 main>h1>a, main>h2>a, main>h3>a, main>h4>a ,main>h5>a,
-main>div, main>p, main>ul, main>ol, main>pre, main>span, main>table, main>pre/*, main>blockquote*/ {
+main>div:not(.fotorama,.fotorama--hidden), main>p, main>ul, main>ol, main>pre, main>span, main>table, main>pre/*, main>blockquote*/ {
     display: block;
+    font-family: var(--header-font);
+}
+
+main>h1>a, main>h2>a, main>h3>a, main>h4>a ,main>h5>a,
+main>div, main>p, main>pre, main>span, main>table, main>pre/*, main>blockquote*/ {
     max-width: calc(var(--content-max-width) - min(10%,10vw));
     margin-inline-end: auto;
     margin-right: auto;
     margin-block-end: auto;
-    font-family: var(--header-font);
+}
+
+main>ul, main>ol {
+    padding-inline-start: calc(min(10%,10vw) + 3rex);
+    max-width: calc(var(--content-max-width) - min(10%,10vw) - 3rex);
+    margin-inline-end: auto;
+    margin-right: auto;
+    margin-block-end: auto;
+}
+
+div.fotorama, div.fotorama--hidden {
+    max-width: calc(var(--content-max-width) - min(10%,10vw));
 }
 
 div.content#content>main>div, div.content#content>main>span, div.content#content>main>p, div.content#content>main>nav, div.content#content>main>h1,
 div.content#content>main>h2, div.content#content>main>h3, div.content#content>main>h4, div.content#content>main>h5, div.content#content>main>image,
-main>pre, main>ol, main>ul, main>p, main>table, main>pre>*, main>blockquote {
+main>pre, main>p, main>table, main>pre>*, main>blockquote {
     padding-inline-start: calc(min(10%,10vw));
+}
+
+div.content#content>main>div.tile.is-ancestor {
+    padding-inline-end: calc(min(21%,21vw));
+    margin: 0 auto;
+    width: max-content;
+}
+
+main>.infobox-wrapper>.infobox a {
+    /*-ms-line-break:auto;
+    -webkit-line-break:normal;*/
+    line-break: anywhere;
+
+}
+main>blockquote {
+    margin-inline-end: 20vw;
+}
+main>div.infobox-wrapper, main>table {
+    margin-inline-start: min(2%, 2vw);
+    margin-inline-end: 25vw;
 }
 
 main>h2, main>h3, main>h4 {
     line-height: 2em;
 }
 
-main>h1 {
+body main>h1 {
     /*background-color: color-mix(in srgb, var(--table-header-bg) 100%, transparent);*/
     background-color: color-mix(in srgb, var(--fg) 20%, var(--table-header-bg));
     font-weight: 900;
@@ -130,27 +179,28 @@ main>h1 {
     line-height: 2em;
 }
 
-main>h2 {
+body main>h2 {
     background-color: color-mix(in srgb, var(--table-header-bg) 100%, transparent);
     font-size: 1.8em;
     font-weight: 900;
 }
 
-main>h3 {
-    background-color: color-mix(in srgb, var(--table-header-bg) 60%, transparent);
+body main>h3 {
+    background-color: color-mix(in srgb, var(--table-header-bg) 65%, transparent);
     font-size: 1.5em;
     font-weight: 800;
     font-style: italic;
     text-transform: uppercase;
 }
 
-main>h4 {
-    background-color: color-mix(in srgb, var(--table-header-bg) 20%, transparent);
+body main>h4 {
+    background-color: color-mix(in srgb, var(--table-header-bg) 40%, transparent);
     font-size: 1.25em;
     font-weight: 700;
 }
 
-main>h5{
+body main>h5{
+    background-color: color-mix(in srgb, var(--table-header-bg) 25%, transparent);
     font-size: 1em;
     font-weight: 600;
     font-variant: small-caps;
@@ -234,11 +284,150 @@ main>h5::before {
     float: inline-start;
 }
 
-div.content#content>main>div.admonition {
+div.content#content>main>.admonition {
     padding-inline-start: 1.2rem;
     margin-inline-start: calc(min(10%,10vw));
+    margin-inline-end: 20vw;
+    padding-bottom: 0;
+    display: flex;
+    flex-flow: column nowrap;
 }
 
-div.content#content>main>div.admonition>div:last-child:not(.admonition-title) {
+div.content#content>main>.admonition>:last-child:not(.admonition-title) {
     padding-inline-start: 2.5rem;
+    padding-inline-end: 5vw;
+}
+
+/*
+.admonition
+    div|summary.admonition-title
+        ...
+    div
+        p
+            img
+        p
+        ...
+*/
+
+
+.admonition :is(blockquote,pre,code,table):only-child {
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    max-width: unset;
+}
+
+.admonition>:last-child:has(>:is(blockquote,pre,code,table):only-child) {
+    padding: 0 !important; /*TODO*/
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: -1.2rem !important; /*TODO*/
+    margin-right: -1.2rem !important; /*TODO*/
+
+    &>blockquote {
+        margin: 0;
+    }
+}
+
+/*
+.admonition>:last-child:not(.admonition-title) {
+    display: inline-flex;
+
+    &>p:first-child:not(:only-child):has(>:is(img:only-child,a:only-child>img:only-child)) {
+        width: 20ex;
+        display: block;
+    }
+
+    &>*:not(p:first-child) {
+        display: block;
+        width: auto;
+        margin-inline-start: 0;
+        margin-inline-end: 0;
+        margin-left: 20ex;
+    }
+}*/
+
+footer#last-change {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--sidebar-fg);
+    background: var(--sidebar-bg);
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
+}
+footer#last-change>a {
+    color: var(--links); /*color-mix(in srgb, var(--links) 45%, black 10%);*/
+    display: inline;
+}
+
+
+
+main>div.tile.is-ancestor {
+    margin: 0.75rem 0;
+}
+div.tile.is-ancestor {
+    flex-wrap: wrap;
+    
+    /*justify-content: center;
+    justify-items: center;
+    align-content: center;
+    align-items: center;*/
+
+
+
+    /*max-width: 20vw;
+    width: auto;
+    height: 100%;*/
+    /*width: fit-content;
+    height: fit-content;*/
+}
+
+div.tile.is-ancestor>.tile {
+    /*max-width: max-content;*/
+    min-width: min-content;
+    max-height: max-content;
+    min-height: min-content;
+    height: max-content;
+    /*width: max-content;*/
+    width: auto;
+    flex-grow: 1;
+    flex-shrink: 2;
+    /*max-height: max-content;*/
+    /*height: min-content;*/
+    /*max-height: 25vh;*/
+    justify-content: center;
+}
+div.tile>.tile img {
+    min-width: 5vw;
+    min-height: 10vh;
+    /*min-width: 5vw;*/
+    max-height: 30vh;
+    max-width: inherit;
+    height: 100% !important;    
+    width: auto !important;
+    border: 2px solid var(--bg);
+    flex-grow: 0;
+    flex-shrink: 1;
+}
+
+
+
+/*div.content#content>main>:is(ul,ol)>li {
+    margin-inline-start: 2rex;
+}*/
+
+
+
+
+/*p:has(+:is(ul,ol,p:has(>ul,>ol)))>:is(strong,h6) {
+    
+}*/
+
+p:has(>:is(strong,h6:only-child))+:is(ul,ol,p:has(>ul,>ol)) {
+    margin-top: 0;
 }

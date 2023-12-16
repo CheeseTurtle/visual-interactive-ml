@@ -1,0 +1,558 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Annotation and Notekeeping - Visual and Interactive ML Resources</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="./theme/css/infobox.css">
+        <link rel="stylesheet" href="./theme/pagetoc.css">
+        <link rel="stylesheet" href="./theme-admonish/mdbook-admonish.css">
+        <link rel="stylesheet" href="./theme/css/catppuccin.css">
+        <link rel="stylesheet" href="./theme-catppuccin/catppuccin-admonish.css">
+        <link rel="stylesheet" href="./theme/css/spotlight.css">
+        <link rel="stylesheet" href="./theme/css/adjust.css">
+        <link rel="stylesheet" href="./theme/bulma.min.css">
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "ayu" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><div>Introduction</div></li><li class="chapter-item expanded affix "><div>Quick Navigation</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">1.</strong> Overview</div></li><li class="chapter-item expanded affix "><li class="part-title">General Resources</li><li class="chapter-item expanded "><a href="gen_bg-theory.html"><strong aria-hidden="true">2.</strong> General Background/Theory Resources</a></li><li class="chapter-item expanded "><a href="gen_rec-sites.html"><strong aria-hidden="true">3.</strong> Recommended Websites</a></li><li class="chapter-item expanded affix "><li class="part-title">Specific Resources</li><li class="chapter-item expanded "><a href="res_demo.html"><strong aria-hidden="true">4.</strong> Demos and Playgrounds</a></li><li class="chapter-item expanded "><a href="res_artguide.html"><strong aria-hidden="true">5.</strong> Web articles and guides</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Tutorials</div></li><li class="chapter-item expanded affix "><li class="part-title">Resource Listings</li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Resources By Technique Category</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Resources by NN Architecture</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> Resources By Application Domain</div></li><li class="chapter-item expanded affix "><li class="part-title">Tools and Utilities</li><li class="chapter-item expanded "><a href="util_frameworks.html"><strong aria-hidden="true">10.</strong> ML Frameworks</a></li><li class="chapter-item expanded "><a href="util_libraries.html"><strong aria-hidden="true">11.</strong> ML Libraries</a></li><li class="chapter-item expanded "><a href="util_devtools.html"><strong aria-hidden="true">12.</strong> Dev Tools</a></li><li class="chapter-item expanded "><a href="util_misctools.html"><strong aria-hidden="true">13.</strong> Misc. Tools</a></li><li class="chapter-item expanded affix "><li class="part-title">Appendices</li><li class="chapter-item expanded "><a href="app_notes1.html" class="active"><strong aria-hidden="true">14.</strong> Annotation and Notekeeping</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="latte">Latte</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="frappe">Frappé</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="macchiato">Macchiato</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mocha">Mocha</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Visual and Interactive ML Resources</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/CheeseTurtle/visual-interactive-ml" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/CheeseTurtle/visual-interactive-ml/edit/main/src/app_notes1.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main><div class="sidetoc"><nav class="pagetoc"></nav></div>
+
+                        <h1 id="appendix-a-annotation-and-notekeeping" class="pagetoc-exclude"><a class="header" href="#appendix-a-annotation-and-notekeeping">Appendix A: Annotation and Notekeeping</a></h1>
+<h2 id="collaborative-web-annotation"><a class="header" href="#collaborative-web-annotation">Collaborative web annotation</a></h2>
+<p>There are probably others, but here is what I have found so far.</p>
+<h4 id="hypothesis" class="pagetoc-exclude"><a class="header" href="#hypothesis">hypothes.is</a></h4>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-img-wrapper"><img class="infobox-img" src="assets/2023-12-15-17-34-36.png" alt=""/></div></div>
+<div class="infobox-row"><div class="infobox-head">Tagline</div><div class="infobox-spacer"></div><div class="infobox-tail">Collaborate with anyone, anywhere. Use Hypothesis to annotate anything online with classmates, colleagues, or friends.</div></div>
+<div class="infobox-row"><div class="infobox-head">Website</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://web.hypothes.is/">https://web.hypothes.is/</a></div></div>
+<div class="infobox-row"><div class="infobox-head">Repository</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://github.com/hypothesis">https://github.com/hypothesis</a></div></div>
+<div class="infobox-row"><div class="infobox-head">Roadmap</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://web.hypothes.is/product-update/">https://web.hypothes.is/product-update/</a></div></div>
+</div></div>
+<p>Many notekeeping options (see below) have plugins for integration with Hypothesis.</p>
+<div class="tile is-ancestor">
+<a class="tile" href="assets/2023-12-15-17-35-44.png"><img src="assets/2023-12-15-17-35-44.png"/></a>
+<a class="tile" href="assets/2023-12-15-17-43-54.png"><img src="assets/2023-12-15-17-43-54.png"/></a>
+<a class="tile" href="assets/2023-12-15-17-44-30.png"><img src="assets/2023-12-15-17-44-30.png"/></a>
+<a class="tile" href="assets/2023-12-15-17-45-14.png"><img src="assets/2023-12-15-17-45-14.png"/></a>
+<a class="tile" href="assets/2023-12-15-17-45-52.png"><img src="assets/2023-12-15-17-45-52.png"/></a>
+<a class="tile" href="assets/2023-12-15-17-46-06.png"><img src="assets/2023-12-15-17-46-06.png"/></a>
+<a class="tile" href="assets/2023-12-15-17-46-45.png"><img src="assets/2023-12-15-17-46-45.png"/></a>
+</div>
+<h4 id="memex" class="pagetoc-exclude"><a class="header" href="#memex">Memex</a></h4>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-head">Tagline</div><div class="infobox-spacer"></div><div class="infobox-tail">Organise, annotate & discuss websites, PDFs, YouTube videos without leaving your tab. By yourself, with your peers & enhanced by AI</div></div>
+<div class="infobox-row"><div class="infobox-head">Website</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://memex.garden/">https://memex.garden/</a></div></div>
+</div></div>
+<div class="tile is-ancestor">
+<a class="tile" href="assets/2023-12-15-17-47-40.png"><img src="assets/2023-12-15-17-47-40.png"/></a>
+</div>
+<p>See the website for a demo video for researchers.</p>
+<h2 id="hierarchical-note-taking-with-backlinks-and-cross-references"><a class="header" href="#hierarchical-note-taking-with-backlinks-and-cross-references">Hierarchical note-taking with backlinks and cross-references</a></h2>
+<h3 id="primarily-offline-interface"><a class="header" href="#primarily-offline-interface">Primarily Offline Interface</a></h3>
+<p>These offer limited real-time collaboration but don’t have the same lock-in effect (so you aren’t constrained to stay with any particular system, service, or app). Furthermore, unlike the systems that are primarily online services, users can create plugins for them.</p>
+<h4 id="obsidian" class="pagetoc-exclude"><a class="header" href="#obsidian">Obsidian</a></h4>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-head">Tagline</div><div class="infobox-spacer"></div><div class="infobox-tail">Obsidian is the private and flexible note‑taking app that adapts to the way you think.</div></div>
+<div class="infobox-row"><div class="infobox-head">Price</div><div class="infobox-spacer"></div><div class="infobox-tail">Free; pay for sync hosting <a href="https://obsidian.md/pricing">(pricing here)</a></div></div>
+<div class="infobox-row"><div class="infobox-head">File format</div><div class="infobox-spacer"></div><div class="infobox-tail">Markdown (.md)</div></div>
+<div class="infobox-row"><div class="infobox-head">Plugins</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://obsidian.md/plugins">https://obsidian.md/plugins</a></div></div>
+<div class="infobox-row"><div class="infobox-head">Website</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://obsidian.md/">https://obsidian.md/</a></div></div>
+<div class="infobox-row"><div class="infobox-head">Roadmap</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://obsidian.md/roadmap/">https://obsidian.md/roadmap/</a></div></div>
+</div></div>
+<p>Supposedly more well-polished and full-featured than Logseq.</p>
+<p>Has plugins (2000+) for Hypothesis integration, time-synced notes on audio files, automatic captioning, PDF annotation, <a href="https://forum.obsidian.md/t/excalidraw-full-featured-sketching-plugin-in-obsidian/17367">embedded drawings</a>, chemistry diagrams, integrated terminals, graphical chart editing, flashcards and spaced repetition, and more.</p>
+<p>Anyone can develop their own plugins with the plugin API.</p>
+<p>Has apps for every major platform.</p>
+<div class="tile is-ancestor">
+<a class="tile" href="assets/2023-12-15-20-02-50.png"><img src="assets/2023-12-15-20-02-50.png"/></a>
+<a class="tile" href="assets/2023-12-15-20-03-25.png"><img src="assets/2023-12-15-20-03-25.png"/></a>
+<a class="tile" href="assets/2023-12-15-20-03-54.png"><img src="assets/2023-12-15-20-03-54.png"/></a>
+<a class="tile" href="assets/2023-12-15-21-12-10.png"><img src="assets/2023-12-15-21-12-10.png"/></a>
+<a class="tile" href="assets/2023-12-15-21-11-48.png"><img src="assets/2023-12-15-21-11-48.png"/></a>
+<a class="tile" href="assets/2023-12-15-21-11-10.png"><img src="assets/2023-12-15-21-11-10.png"/></a>
+</div>
+<h6 id="some-additional-information"><a class="header" href="#some-additional-information">Some additional information</a></h6>
+<ul>
+<li><a href="https://www.eleanorkonik.com/2021-04-24/">https://www.eleanorkonik.com/2021-04-24/</a></li>
+<li><a href="https://www.reddit.com/r/ObsidianMD/comments/v20eb7/vault_showcase_and_tips_and_tricks/">https://www.reddit.com/r/ObsidianMD/comments/v20eb7/vault_showcase_and_tips_and_tricks/</a></li>
+<li><a href="https://forum.obsidian.md/t/university-setup-with-lecture-notes-progress-bar-and-more-using-templater-dataview-and-buttons/32094">https://forum.obsidian.md/t/university-setup-with-lecture-notes-progress-bar-and-more-using-templater-dataview-and-buttons/32094</a></li>
+<li><a href="https://obsidianninja.com/new-obsidian-showcases-dashboards-movie-library-menu-bar-more/">https://obsidianninja.com/new-obsidian-showcases-dashboards-movie-library-menu-bar-more/</a></li>
+<li><a href="https://forum.obsidian.md/t/example-workflows-in-obsidian/1093/24">https://forum.obsidian.md/t/example-workflows-in-obsidian/1093/24</a></li>
+</ul>
+<h4 id="logseq" class="pagetoc-exclude"><a class="header" href="#logseq">Logseq</a></h4>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-head">Tagline</div><div class="infobox-spacer"></div><div class="infobox-tail">A privacy-first, open-source knowledge base; <br/>Connect your notes, increase understanding.</div></div>
+<div class="infobox-row"><div class="infobox-head">Price</div><div class="infobox-spacer"></div><div class="infobox-tail">Free; pay for sync hosting</div></div>
+<div class="infobox-row"><div class="infobox-head">File format</div><div class="infobox-spacer"></div><div class="infobox-tail">Markdown (.md)</div></div>
+<div class="infobox-row"><div class="infobox-head">Website</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://logseq.com/">https://logseq.com/</a></div></div>
+<div class="infobox-row"><div class="infobox-head">Docs Hub</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://hub.logseq.com/">https://hub.logseq.com/</a></div></div>
+<div class="infobox-row"><div class="infobox-head">Repository</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://github.com/logseq/logseq">https://github.com/logseq/logseq</a></div></div>
+</div></div>
+<div class="tile is-ancestor">
+<a class="tile" href="assets/2023-12-15-20-44-44.png"><img src="assets/2023-12-15-20-44-44.png"/></a>
+<a class="tile" href="assets/2023-12-15-20-45-11.png"><img src="assets/2023-12-15-20-45-11.png"/></a>
+<a class="tile" href="assets/2023-12-15-20-45-46.png"><img src="assets/2023-12-15-20-45-46.png"/></a>
+<a class="tile" href="assets/2023-12-15-20-46-11.png"><img src="assets/2023-12-15-20-46-11.png"/></a>
+<a class="tile" href="assets/2023-12-15-21-08-00.png"><img src="assets/2023-12-15-21-08-00.png"/></a>
+</div>
+<p>Has plugins (150+) for Hypothesis integration, time-synced notes on audio files, automatic captioning, PDF annotation, embedded drawings, chemistry diagrams, integrated terminals, graphical chart editing, flashcards and spaced repetition, and more.</p>
+<p>Anyone can develop their own plugins with the plugin API.</p>
+<p>Has apps for every major platform.</p>
+<h4 id="onenote" class="pagetoc-exclude"><a class="header" href="#onenote">OneNote</a></h4>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-head">Tagline</div><div class="infobox-spacer"></div><div class="infobox-tail">One cross-functional notebook for all your notetaking needs.</div></div>
+<div class="infobox-row"><div class="infobox-head">Price</div><div class="infobox-spacer"></div><div class="infobox-tail">included with Office365</div></div>
+<div class="infobox-row"><div class="infobox-head">File format</div><div class="infobox-spacer"></div><div class="infobox-tail">Proprietary</div></div>
+<div class="infobox-row"><div class="infobox-head">Website</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://www.onenote.com/">https://www.onenote.com/</a></div></div>
+<div class="infobox-row"><div class="infobox-head">Product Overview</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://www.microsoft.com/en-us/microsoft-365/onenote/digital-note-taking-app">https://www.microsoft.com/en-us/microsoft-365/onenote/digital-note-taking-app</a></div></div>
+</div></div>
+<p>Perhaps more intuitive to use than Obsidian, and is part of the Microsoft ecosystem. However, there are fewer plugins (for integration with other services) and the notes cannot be edited with other programs.</p>
+<p>Offers better real-time collaboration features than the other offline-oriented options.</p>
+<p>Has apps for every major platform and a web interface.</p>
+<h3 id="primarilyexclusively-online"><a class="header" href="#primarilyexclusively-online">Primarily/Exclusively Online</a></h3>
+<p>These offer effortless real-time collaboration (whereas collaboration with the above [except OneNote] would be more like pushing to a Git repository) but are generally pricier, lack robust offline access to notes, and have much higher lock-in (meaning it’s difficult, if not nearly impossible, to migrate to other note systems). Editing using other editors is generally not possible, although usually there are export options. (However, lots of exporting and importing is not convenient and also does not make use of the collaborative features.)</p>
+<h4 id="notion" class="pagetoc-exclude"><a class="header" href="#notion">Notion</a></h4>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-head">Tagline</div><div class="infobox-spacer"></div><div class="infobox-tail">Notion is the connected workspace where better, faster work happens.</div></div>
+<div class="infobox-row"><div class="infobox-head">Price</div><div class="infobox-spacer"></div><div class="infobox-tail">Free with limitations; [pricing here](https://www.notion.so/pricing)</div></div>
+<div class="infobox-row"><div class="infobox-head">File format</div><div class="infobox-spacer"></div><div class="infobox-tail">N/A (no offline interface; some export options)</div></div>
+<div class="infobox-row"><div class="infobox-head">Website</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://www.notion.so/product">https://www.notion.so/product</a></div></div>
+</div></div>
+<p>Has apps for every major platform and a web app.</p>
+<div class="tile is-ancestor">
+<a class="tile" href="assets/2023-12-15-21-02-58.png"><img src="assets/2023-12-15-21-02-58.png"/></a>
+<a class="tile" href="assets/2023-12-15-21-03-45.png"><img src="assets/2023-12-15-21-03-45.png"/></a>
+<a class="tile" href="assets/2023-12-15-21-02-10.png"><img src="assets/2023-12-15-21-02-10.png"/></a>
+</div>
+<h4 id="roam-research" class="pagetoc-exclude"><a class="header" href="#roam-research">Roam Research</a></h4>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-head">Tagline</div><div class="infobox-spacer"></div><div class="infobox-tail">A note-taking tool for networked thought.</div></div>
+<div class="infobox-row"><div class="infobox-head">Price</div><div class="infobox-spacer"></div><div class="infobox-tail">$15/month, $165/year; $500/5 years</div></div>
+<div class="infobox-row"><div class="infobox-head">File format</div><div class="infobox-spacer"></div><div class="infobox-tail">N/A (no offline interface; some export options)</div></div>
+<div class="infobox-row"><div class="infobox-head">Website</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://roamresearch.com/">https://roamresearch.com/</a></div></div>
+<div class="infobox-row"><div class="infobox-head">Demo vids</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://roamresearch.com/#/app/help/page/2h9V-FtAO">https://roamresearch.com/#/app/help/page/2h9V-FtAO</a></div></div>
+</div></div>
+<blockquote>
+<p>As easy to use as a document. As powerful as a graph database.</p>
+<p>Roam helps you organize your research for the long haul.</p>
+</blockquote>
+<p>Also has apps for every major platform, as well as a web interface.</p>
+<div class="tile is-ancestor">
+<a class="tile" href="assets/2023-12-15-21-05-24.png"><img src="assets/2023-12-15-21-05-24.png"/></a>
+<a class="tile" href="assets/2023-12-15-21-05-33.png"><img src="assets/2023-12-15-21-05-33.png"/></a>
+</div>
+<h4 id="sagaso" class="pagetoc-exclude"><a class="header" href="#sagaso">Saga.so</a></h4>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-head">Tagline</div><div class="infobox-spacer"></div><div class="infobox-tail">Connected notes, tasks, and tools. For you and your team.</div></div>
+<div class="infobox-row"><div class="infobox-head">Price</div><div class="infobox-spacer"></div><div class="infobox-tail">Free with limitations ([pricing here](https://saga.so/pricing))</div></div>
+<div class="infobox-row"><div class="infobox-head">File format</div><div class="infobox-spacer"></div><div class="infobox-tail">N/A (no offline interface; some export options)</div></div>
+<div class="infobox-row"><div class="infobox-head">Website</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://saga.so/">https://saga.so/</a></div></div>
+<div class="infobox-row"><div class="infobox-head">Roadmap</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://sagahq.canny.io/">https://sagahq.canny.io/</a></div></div>
+</div></div>
+<p>Desktop apps for Windows and Mac (no Linux, mobile, or web interface at the moment).</p>
+<div class="tile is-ancestor">
+<a class="tile" href="assets/2023-12-15-21-25-17.png"><img src="assets/2023-12-15-21-25-17.png"/></a>
+<a class="tile" href="assets/2023-12-15-21-25-44.png"><img src="assets/2023-12-15-21-25-44.png"/></a>
+</div>
+<h2 id="markdown-editors-geared-towards-researchacademia"><a class="header" href="#markdown-editors-geared-towards-researchacademia">Markdown editors geared towards research/academia</a></h2>
+<p>These are compatible with systems that are based on Markdown (.md) files, such as <a href="#obsidian">Obsidian</a> and <a href="#logseq">Logseq</a>. (Note that while the online-oriented systems typically also make use of Markdown <em>syntax</em>, transparent access to Markdown files is not available.)</p>
+<h4 id="zettlr" class="pagetoc-exclude"><a class="header" href="#zettlr">Zettlr</a></h4>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-img-wrapper"><img class="infobox-img" src="assets/2023-12-15-20-08-25.png" alt=""/></div></div>
+<div class="infobox-row"><div class="infobox-head">Tagline</div><div class="infobox-spacer"></div><div class="infobox-tail">Your one-stop publication workbench</div></div>
+<div class="infobox-row"><div class="infobox-head">Price</div><div class="infobox-spacer"></div><div class="infobox-tail">Free</div></div>
+<div class="infobox-row"><div class="infobox-head">File format</div><div class="infobox-spacer"></div><div class="infobox-tail">Markdown (.md)</div></div>
+<div class="infobox-row"><div class="infobox-head">Website</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://www.zettlr.com/">https://www.zettlr.com/</a></div></div>
+<div class="infobox-row"><div class="infobox-head">Keyboard Ref</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://www.zettlr.com/shortcuts">https://www.zettlr.com/shortcuts</a></div></div>
+<div class="infobox-row"><div class="infobox-head">Documentation</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://docs.zettlr.com/">https://docs.zettlr.com/</a></div></div>
+<div class="infobox-row"><div class="infobox-head">Repository</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://github.com/Zettlr/Zettlr">https://github.com/Zettlr/Zettlr</a></div></div>
+</div></div>
+<blockquote>
+<p>From idea to publication in one app: Zettlr accompanies you while writing your blog post, newspaper article, term paper, thesis, or entire book.</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>
+<p><strong>Privacy First:</strong></p>
+<p>Zettlr is Privacy First: There is no forced cloud-synchronization and all files stay on your computer.</p>
+</li>
+<li>
+<p><strong>From Idea to Publication:</strong></p>
+<p>Manage all your writing projects from one app: From the initial idea to a final publication, already typeset in the appropriate template.</p>
+</li>
+<li>
+<p><strong>First-class Citation Support:</strong></p>
+<p>Hook Zettlr into your reference manager to have all your sources when you need them.</p>
+</li>
+</ul>
+</blockquote>
+<div class="tile is-ancestor">
+<a class="tile" href="assets/2023-12-15-20-11-07.png"><img src="assets/2023-12-15-20-11-07.png"/></a>
+<a class="tile" href="assets/2023-12-15-20-11-34.png"><img src="assets/2023-12-15-20-11-34.png"/></a>
+<a class="tile" href="assets/2023-12-15-20-12-20.png"><img src="assets/2023-12-15-20-12-20.png"/></a>
+<a class="tile" href="assets/2023-12-15-20-12-46.png"><img src="assets/2023-12-15-20-12-46.png"/></a>
+</div>
+<hr />
+<h2 id="academic-literature-and-citation-management"><a class="header" href="#academic-literature-and-citation-management">Academic literature and citation management</a></h2>
+<h3 id="reference-managers"><a class="header" href="#reference-managers">Reference Managers</a></h3>
+<h4 id="zotero" class="pagetoc-exclude"><a class="header" href="#zotero">Zotero</a></h4>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-head">Tagline</div><div class="infobox-spacer"></div><div class="infobox-tail">Your personal research assistant: Zotero is a free, easy-to-use tool to help you collect, organize, annotate, cite, and share research.</div></div>
+<div class="infobox-row"><div class="infobox-head">Price</div><div class="infobox-spacer"></div><div class="infobox-tail">Free, with the option to buy additional cloud storage</div></div>
+<div class="infobox-row"><div class="infobox-head">Website</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://zotero.org">https://zotero.org</a></div></div>
+<div class="infobox-row"><div class="infobox-head">Repository</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://github.com/zotero/zotero">https://github.com/zotero/zotero</a></div></div>
+</div></div>
+<p>I’ve noticed that more note-keeping, citation management, and bibliography tools have integration options for Zotero than do for Mendeley. This leads me to believe that Zotero is more popular / widely used. This could also be due to observation bias since I am personally only familiar with Zotero.</p>
+<p>Has apps for all major platforms. Not the prettiest per se, but has plenty of useful features.</p>
+<p><img src="assets/2023-12-15-20-57-53.png" alt="" /></p>
+<p>Note also <a href="https://zbib.org/">zoterobib</a>, an officially-endorsed bibliography tool. (Not the same as Zotero, but made by the same development team.)</p>
+<p><img src="assets/2023-12-15-20-56-37.png" alt="" /></p>
+<h4 id="mendeley" class="pagetoc-exclude"><a class="header" href="#mendeley">Mendeley</a></h4>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-head">Price</div><div class="infobox-spacer"></div><div class="infobox-tail">Probably not free, because Elsevier.</div></div>
+<div class="infobox-row"><div class="infobox-head">Website</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://wwww.mendeley.com/guides/mendeley-reference-manager/">https://wwww.mendeley.com/guides/mendeley-reference-manager/</a></div></div>
+</div></div>
+<p>Appears to be a subset of Elsevier, as its homepage (&lt;www.mendeley.com&gt;) redirected me to the Elsevier website after a short delay.</p>
+<hr />
+<h3 id="article-managers"><a class="header" href="#article-managers">Article Managers</a></h3>
+<h4 id="readcube" class="pagetoc-exclude"><a class="header" href="#readcube">ReadCube</a></h4>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-img-wrapper"><img class="infobox-img" src="assets/2023-12-15-20-19-52.png" alt=""/></div></div>
+<div class="infobox-row"><div class="infobox-head">Tagline</div><div class="infobox-spacer"></div><div class="infobox-tail">Transform how your team works with scholarly literature</div></div>
+<div class="infobox-row"><div class="infobox-head">Price</div><div class="infobox-spacer"></div><div class="infobox-tail">Pricing not listed, but definitely not free</div></div>
+<div class="infobox-row"><div class="infobox-head">Website</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://www.readcube.com">https://www.readcube.com</a></div></div>
+</div></div>
+<blockquote>
+<p>ReadCube’s literature management system helps businesses discover, organize, read, annotate, share, and cite research. Simplify your day-to-day so you’re free to make tomorrow’s discoveries.</p>
+</blockquote>
+<div class="tile is-ancestor">
+<a class="tile" href="assets/2023-12-15-20-20-32.png"><img src="assets/2023-12-15-20-20-32.png"/></a>
+<a class="tile" href="assets/2023-12-15-20-20-58.png"><img src="assets/2023-12-15-20-20-58.png"/></a>
+<a class="tile" href="assets/2023-12-15-20-21-28.png"><img src="assets/2023-12-15-20-21-28.png"/></a>
+<a class="tile" href="assets/2023-12-15-20-21-44.png"><img src="assets/2023-12-15-20-21-44.png"/></a>
+</div>
+<p>The ReadCube website has <a href="https://www.readcube.com/en/comparison/">a page</a> where it provides comparisons of its services with those of Rightfind, Article Galaxy, Endnote, and Mendeley. I find it a bit suspicious that it doesn’t compare itself with Paperpile or any of the other popular similar services.</p>
+<h4 id="paperpile" class="pagetoc-exclude"><a class="header" href="#paperpile">PaperPile</a></h4>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-img-wrapper"><img class="infobox-img" src="assets/2023-12-15-20-28-12.png" alt=""/></div></div>
+<div class="infobox-row"><div class="infobox-head">Tagline</div><div class="infobox-spacer"></div><div class="infobox-tail">The no-fuss reference manager for the web;<br/>Manage your research library right in your browser.</div></div>
+<div class="infobox-row"><div class="infobox-head">Price</div><div class="infobox-spacer"></div><div class="infobox-tail">$2.99/mo ([pricing](https://paperpile.com/pricing/))</div></div>
+<div class="infobox-row"><div class="infobox-head">Website</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://paperpile.com/">https://paperpile.com/</a></div></div>
+</div></div>
+<p>See its <a href="https://paperpile.com/features/">Features</a> page for an overview. (Categories: Manage References, Find and Collect, Organize PDFs, Highlight and annotate, Share and Collaborate, Cite in Google Docs).</p>
+<p>Its <a href="https://paperpile.com/roadmap/">Feature Roadmap</a> is also available for viewing.</p>
+<p>Advertises that it has a plugin for Microsoft Word and Google Docs. It also has mobile apps for Android/iOS.</p>
+<div class="tile is-ancestor">
+<a class="tile" href="assets/2023-12-15-20-29-03.png"><img src="assets/2023-12-15-20-29-03.png"/></a>
+</div>
+<hr />
+<h3 id="other"><a class="header" href="#other">Other</a></h3>
+<h4 id="papermemory" class="pagetoc-exclude"><a class="header" href="#papermemory">PaperMemory</a></h4>
+<div class="infobox-wrapper"><div class="infobox">
+<div class="infobox-row"><div class="infobox-head">Tagline</div><div class="infobox-spacer"></div><div class="infobox-tail">PaperMemory automatically records and organizes the papers you read, without ever leaving your browser.</div></div>
+<div class="infobox-row"><div class="infobox-head">Price</div><div class="infobox-spacer"></div><div class="infobox-tail">Free</div></div>
+<div class="infobox-row"><div class="infobox-head">Website</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://papermemory.org/">https://papermemory.org/</a></div></div>
+<div class="infobox-row"><div class="infobox-head">Repository</div><div class="infobox-spacer"></div><div class="infobox-tail"><a href="https://github.com/vict0rsch/PaperMemory">https://github.com/vict0rsch/PaperMemory</a></div></div>
+</div></div>
+<p>It is a browser extension.</p>
+<blockquote>
+<ul>
+<li>
+<p><strong>Parse papers you open automatically.</strong></p>
+<p>Papers are stored in your Memory automatically, without a click. You can then search them, tag them, take personal notes etc.</p>
+</li>
+<li>
+<p><strong>Match preprints to publications</strong></p>
+<p>By querying SemanticScholar, DBLP and CrossRef, PaperMemory can discover the proper publication of Arxiv pre-prints.</p>
+</li>
+<li>
+<p>You live in your browser? So do your papers</p>
+<p>Share papers to your favorite apps by copying:</p>
+<ul>
+<li>a  BibTex entry for  Overleaf</li>
+<li>a  Markdown link [title](url) link for  Github,  HackMD or  Notion</li>
+<li>a  HyperText link for  emails,  Google Docs,  Slack, etc.</li>
+</ul>
+</li>
+<li>
+<p>Discover code repositories
+Using the PapersWithCode API, PaperMemory will match code repositories with papers in your Memory.</p>
+</li>
+<li>
+<p>Enhance ArXiv.org</p>
+<p>Display the actual pubication venue of published papers, a link to the code repository, copy the BibTex entry etc.</p>
+</li>
+<li>
+<p>Instantly copy <code>.bib</code>-compatible bibliography entries
+Export a paper’s BibTex entry directly from the extension, or bulk export BibTex entries by paper tag. You can even use PaperMemory to update the ArXiv entries of a stand-alone <code>.bib</code> file.</p>
+</li>
+<li>
+<p>Highly customizable</p>
+<p>Change the theme to light or dark, control the default link copied to your clipboard, add links to SciRate / HuggingFace Papers / Ar5iv / ArxivSanity, trigger parsing manually, export / import papers etc.</p>
+</li>
+<li>
+<p>And many more features!
+Github Gist synchronization, regex-based automatic paper tagging, arbitrary website parsing to record Blog posts or dataset websites, etc.</p>
+</li>
+</ul>
+</blockquote>
+<p><a class="tile" href="https://papermemory.org/assets/d2.gif"><img src="https://papermemory.org/assets/d2.gif"/></a></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="util_misctools.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="util_misctools.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+        <script src="ace.js"></script>
+        <script src="editor.js"></script>
+        <script src="mode-rust.js"></script>
+        <script src="theme-dawn.js"></script>
+        <script src="theme-tomorrow_night.js"></script>
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript">
+            global = globalThis;
+        </script>
+        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.min.js" integrity="sha512-cWEytOR8S4v/Sd3G5P1Yb7NbYgF1YAUzlg1/XpDuouZVo3FEiMXbeWh4zewcYu/sXYQR5PgYLRbhf18X/0vpRg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>-->
+        <script type="module" src="./theme/zepto.js"></script>
+        <script type="text/javascript">
+            global = globalThis;
+        </script>
+        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.min.js" integrity="sha512-cWEytOR8S4v/Sd3G5P1Yb7NbYgF1YAUzlg1/XpDuouZVo3FEiMXbeWh4zewcYu/sXYQR5PgYLRbhf18X/0vpRg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>-->
+        <script type="module" src="./theme/pagetoc.js"></script>
+        <script type="text/javascript">
+            global = globalThis;
+        </script>
+        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.min.js" integrity="sha512-cWEytOR8S4v/Sd3G5P1Yb7NbYgF1YAUzlg1/XpDuouZVo3FEiMXbeWh4zewcYu/sXYQR5PgYLRbhf18X/0vpRg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>-->
+        <script type="module" src="./theme/book2.js"></script>
+
+
+    </div>
+    </body>
+</html>

@@ -9,7 +9,6 @@
 # General Resources
 
 - [General Background/Theory Resources](./gen_bg-theory.md)
-
 - [Recommended Websites](./gen_rec-sites.md)
 
 # Specific Resources
@@ -47,5 +46,8 @@
 - [ML Libraries](./util_libraries.md)
 - [Dev Tools](./util_devtools.md)
 - [Misc. Tools](./util_misctools.md)
+
+# Appendices
+- [Annotation and Notekeeping](./app_notes1.md)
 
 

@@ -1,0 +1,102 @@
+
+@property --spotlight-mix-dark {
+    syntax: "<number> | <percentage>";
+    inherits: true;
+    initial-value: 50%;
+}
+
+@property --spotlight-mix-light {
+    syntax: "<number> | <percentage>";
+    inherits: true;
+    initial-value: 50%;
+}
+
+
+:root {
+    --text-spotlight: #fbff00;
+    --spotlight-mix-light: 75%;
+    --spotlight-mix-dark: 75%;
+    /*--bg-inverted-hwb: hwb(from var(--bg) h calc(100-w) calc(100-b));
+    --bg-inverted-lab:lab(from var(--bg) calc(100-l) calc(100-a) calc(100-b));
+    --bg-inverted-hsl:hsl(from var(--bg) calc(360-h) calc(100-s) calc(100-l));
+    --bg-inverted-lch:lch(from var(--bg) calc(100-l) calc(100-c) calc(360-h));
+    --bg-inverted-rgb:rgb(from red calc(255-r) calc(255-g) calc(255-b));*/
+    --bg-inverted: rgb(from var(--bg) calc(255 - r) calc(255 - g) calc(255 - b));
+    --text-spotlight-bg: color-mix(in srgb, var(--bg-inverted) 60%, var(--text-spotlight) 40%);
+    --text-spotlight-bg-rgba: color-mix(in srgb, var(--text-spotlight) 40%, var(--bg) 20%);
+
+    --bg-spotlight: color-mix(in srgb, var(--text-spotlight) 60%, var(--bg-inverted) 40%);
+    --bg-spotlight-rgba: rgba(var(--bg-spotlight) 50%);
+
+    /*--spotlight-text-glow: */
+}
+
+@property --text-spotlight-rgba {
+    syntax: "<color>";
+    inherits: true;
+    initial-value: rgb(var(--text-spotlight) 50%);
+}
+
+/*.ayu {
+    --text-spotlight-rgba: color-mix(in srgb, var(--text-spotlight) var(--text-spotlight-mix-dark), transparent);
+}*/
+/*.sidebar {
+    --text-spotlight: #fbff00;
+    --spotlight-mix-light: 50%;
+}*/
+
+/*@property --text-spotlight-mix {
+    syntax: "<number> | <percentage>";
+    inherits: true;
+    initial-value: 35%;
+}*/
+
+
+
+.light .spotlight, .latte .spotlight, .rust .spotlight,
+.light-theme .spotlight {
+    --text-spotlight-rgba: color-mix(in srgb, var(--text-spotlight) var(--spotlight-mix-light), transparent);
+}
+
+.ayu .spotlight, .frappe .spotlight, .macchiato .spotlight,
+.navy .spotlight, .coal .spotlight, .ayu .spotlight,
+.mocha .spotlight,
+.dark-theme .spotlight {
+    --text-spotlight-rgba: color-mix(in srgb, var(--text-spotlight) var(--spotlight-mix-dark), transparent);
+}
+
+.spotlight:not(:has(a.header)) {
+    filter: 
+        drop-shadow(0 0 1rem var(--text-spotlight-bg));
+    
+}
+
+.spotlight::before {
+    content: "";
+    position: absolute;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: color-mix(in srgb, var(--text-spotlight) var(--spotlight-mix-dark), transparent);
+    box-shadow: 0 0 1rem var(--text-spotlight-bg-rgba);
+}
+
+.spotlight>a:not(.header) {
+    text-shadow: 0 0 0.125rem var(--text-spotlight-bg),
+        0 0 0.25rem var(--text-spotlight-bg),
+        0 0 0.5rem var(--text-spotlight-bg),
+        0 0 0.75rem var(--text-spotlight-bg),
+        0 0 1rem var(--text-spotlight-bg);
+        /*-1 -1 0.125rem var(--text-spotlight-bg),
+        -1 1 0.125rem var(--text-spotlight-bg),
+        1 -1 0.125rem var(--text-spotlight-bg),
+        1 1 0.125rem var(--text-spotlight-bg),
+        0 0 0.125rem var(--text-spotlight-bg);*/
+}
+
+.spotlight>.header>code {
+    background: none;
+    color: var(--fg) !important;
+}

@@ -35,7 +35,9 @@
         <link rel="stylesheet" href="./theme-admonish/mdbook-admonish.css">
         <link rel="stylesheet" href="./theme/css/catppuccin.css">
         <link rel="stylesheet" href="./theme-catppuccin/catppuccin-admonish.css">
+        <link rel="stylesheet" href="./theme/css/spotlight.css">
         <link rel="stylesheet" href="./theme/css/adjust.css">
+        <link rel="stylesheet" href="./theme/bulma.min.css">
 
         <!-- MathJax -->
         <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -97,7 +99,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><div>Introduction</div></li><li class="chapter-item expanded affix "><div>Quick Navigation</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">1.</strong> Overview</div></li><li class="chapter-item expanded affix "><li class="part-title">General Resources</li><li class="chapter-item expanded "><a href="gen_bg-theory.html"><strong aria-hidden="true">2.</strong> General Background/Theory Resources</a></li><li class="chapter-item expanded "><a href="gen_rec-sites.html"><strong aria-hidden="true">3.</strong> Recommended Websites</a></li><li class="chapter-item expanded affix "><li class="part-title">Specific Resources</li><li class="chapter-item expanded "><a href="res_demo.html"><strong aria-hidden="true">4.</strong> Demos and Playgrounds</a></li><li class="chapter-item expanded "><a href="res_artguide.html"><strong aria-hidden="true">5.</strong> Web articles and guides</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Tutorials</div></li><li class="chapter-item expanded affix "><li class="part-title">Resource Listings</li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Resources By Technique Category</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Resources by NN Architecture</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> Resources By Application Domain</div></li><li class="chapter-item expanded affix "><li class="part-title">Tools and Utilities</li><li class="chapter-item expanded "><a href="util_frameworks.html"><strong aria-hidden="true">10.</strong> ML Frameworks</a></li><li class="chapter-item expanded "><a href="util_libraries.html"><strong aria-hidden="true">11.</strong> ML Libraries</a></li><li class="chapter-item expanded "><a href="util_devtools.html"><strong aria-hidden="true">12.</strong> Dev Tools</a></li><li class="chapter-item expanded "><a href="util_misctools.html"><strong aria-hidden="true">13.</strong> Misc. Tools</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><div>Introduction</div></li><li class="chapter-item expanded affix "><div>Quick Navigation</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">1.</strong> Overview</div></li><li class="chapter-item expanded affix "><li class="part-title">General Resources</li><li class="chapter-item expanded "><a href="gen_bg-theory.html"><strong aria-hidden="true">2.</strong> General Background/Theory Resources</a></li><li class="chapter-item expanded "><a href="gen_rec-sites.html"><strong aria-hidden="true">3.</strong> Recommended Websites</a></li><li class="chapter-item expanded affix "><li class="part-title">Specific Resources</li><li class="chapter-item expanded "><a href="res_demo.html"><strong aria-hidden="true">4.</strong> Demos and Playgrounds</a></li><li class="chapter-item expanded "><a href="res_artguide.html"><strong aria-hidden="true">5.</strong> Web articles and guides</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Tutorials</div></li><li class="chapter-item expanded affix "><li class="part-title">Resource Listings</li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Resources By Technique Category</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Resources by NN Architecture</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> Resources By Application Domain</div></li><li class="chapter-item expanded affix "><li class="part-title">Tools and Utilities</li><li class="chapter-item expanded "><a href="util_frameworks.html"><strong aria-hidden="true">10.</strong> ML Frameworks</a></li><li class="chapter-item expanded "><a href="util_libraries.html"><strong aria-hidden="true">11.</strong> ML Libraries</a></li><li class="chapter-item expanded "><a href="util_devtools.html"><strong aria-hidden="true">12.</strong> Dev Tools</a></li><li class="chapter-item expanded "><a href="util_misctools.html"><strong aria-hidden="true">13.</strong> Misc. Tools</a></li><li class="chapter-item expanded affix "><li class="part-title">Appendices</li><li class="chapter-item expanded "><a href="app_notes1.html"><strong aria-hidden="true">14.</strong> Annotation and Notekeeping</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -248,7 +250,21 @@
         <script src="book.js"></script>
 
         <!-- Custom JS scripts -->
-        <script src="./theme/pagetoc.js"></script>
+        <script type="text/javascript">
+            global = globalThis;
+        </script>
+        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.min.js" integrity="sha512-cWEytOR8S4v/Sd3G5P1Yb7NbYgF1YAUzlg1/XpDuouZVo3FEiMXbeWh4zewcYu/sXYQR5PgYLRbhf18X/0vpRg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>-->
+        <script type="module" src="./theme/zepto.js"></script>
+        <script type="text/javascript">
+            global = globalThis;
+        </script>
+        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.min.js" integrity="sha512-cWEytOR8S4v/Sd3G5P1Yb7NbYgF1YAUzlg1/XpDuouZVo3FEiMXbeWh4zewcYu/sXYQR5PgYLRbhf18X/0vpRg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>-->
+        <script type="module" src="./theme/pagetoc.js"></script>
+        <script type="text/javascript">
+            global = globalThis;
+        </script>
+        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.min.js" integrity="sha512-cWEytOR8S4v/Sd3G5P1Yb7NbYgF1YAUzlg1/XpDuouZVo3FEiMXbeWh4zewcYu/sXYQR5PgYLRbhf18X/0vpRg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>-->
+        <script type="module" src="./theme/book2.js"></script>
 
 
     </div>

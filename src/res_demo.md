@@ -1,68 +1,23 @@
-# Demos and Playgrounds
-
-## Anomagram
-```info
-:: Tagline: Interactive Visualization for Autoencoders with Tensorflow.js
-:: Live Demo: <https://anomagram.fastforwardlabs.com/#/>
-:: Repository: <https://github.com/victordibia/anomagram>
-```
-
-> Anomagram is an interactive experience built with Tensorflow.js to demonstrate how deep neural networks (autoencoders) can be applied to the task of anomaly detection.
+# Demos and Playgrounds {.pagetoc-exclude}
 
 
-## DRLViz
-```info
-:: Tagline: Online demo of DRLViz, an interactive tool to understand decisions and memory in Deep Reinforcement Learning
-:: Live Demo: <https://sical.github.io/drlviz/>
-:: Repository: <https://github.com/sical/drlviz>
-```
 
-## VisualML
-
-```info
-:: Tagline: TODO
-:: Live Demo: (multiple --see below)
-:: Repository: <https://github.com/dsgiitr/VisualML>
-```
-
-> Visual Machine Learning contains a set of Machine Learning and Deep Learning interactive visualisation demos for developing intuition. These demos are developed using TensorFlow.js and can be executed directly in your browser.
-
-**Live demo links:**
-1. [ANN](https://dsgiitr.github.io/ann-demo)
-2. [Autoencoder](https://dsgiitr.github.io/autoencoder-demo)
-3. [Logistic Regression](https://dsgiitr.github.io/logistic-regression-demo)
-4. [CNN](https://dsgiitr.github.io/mnist-cnn-demo)
-5. [PCA](https://dsgiitr.github.io/pca-demo)
-6. [SVM](https://dsgiitr.github.io/svm-demo)
-7. [Neural Style Transfer](https://dsgiitr.github.io/neural-style-transfer-tfjs)
-8. [Vanishing Gradients & ReLU](https://dsgiitr.github.io/vanishing-gradients-demo)
+#### Attention Visualization
 
 
-## RNN Explainer
 
-```info
-:: Tagline: An interactive visualization application designed to help non-experts learn about Recurrent Neural Networks (RNNs).
-:: Live demo: <https://damien0x0023.github.io/rnnExplainer/>
-:: Repository: <https://github.com/damien0x0023/rnnExplainer>
-```
-
-```admonish warning
- (Recommendation: "try this demo with a screen which is larger than 8 inches and has a minimum resolution of 1280x720")
-```
-
-Hello.
-
-## AttViz
+##### AttViz {.pagetoc-exclude}
 
 ```info
 :: Tagline: Self attention made simple; Dissecting Transformers via attention visualization
 :: Live demo: <http://attviz.ijs.si/>
 :: Repository: <https://github.com/SkBlaz/attviz>
 ```
+{{#tile
+:: ![AttViz screenshot](assets/2023-12-11-13-48-56.png)
+}}
 
-![AttViz screenshot](2023-12-11-13-48-56.png)
-
-## BertViz
+##### BertViz {.pagetoc-exclude}
 
 ```info
 :: Tagline: Visualize Attention in NLP Models
@@ -72,31 +27,34 @@ Hello.
 
 > BertViz is an interactive tool for visualizing attention in Transformer language models such as BERT, GPT2, or T5. It can be run inside a Jupyter or Colab notebook through a simple Python API that supports most Huggingface models. BertViz extends the Tensor2Tensor visualization tool by Llion Jones, providing multiple views that each offer a unique lens into the attention mechanism.
 
-The repository link contains information about usage as well as several links to interactive tutorials for use in Colab.
+The repository link contains information about usage as well as several links to interactive tutorial Colab notebooks.
 
-![](https://github.com/jessevig/bertviz/blob/master/images/neuron-view-dark.gif?raw=true)
-![](https://github.com/jessevig/bertviz/blob/master/images/model-view-noscroll.gif?raw=true)
-![](https://github.com/jessevig/bertviz/blob/master/images/neuron-view-dark.gif?raw=true)
+{{#tile
+:: ![](https://github.com/jessevig/bertviz/blob/master/images/neuron-view-dark.gif?raw=true)
+:: ![](https://github.com/jessevig/bertviz/blob/master/images/model-view-noscroll.gif?raw=true)
+}}
 
-<!--![](2023-12-11-13-56-07.png)![](2023-12-11-13-56-14.png)
-![](2023-12-11-13-56-20.png)-->
+<!--![](assets/2023-12-11-13-56-07.png)![](assets/2023-12-11-13-56-14.png)
+![](assets/2023-12-11-13-56-20.png)-->
 
-## attention-viz
+##### attention-viz {.pagetoc-exclude}
 
 ```info
 :: Tagline: Visualizing query-key interactions in language + vision transformers
 :: Live demo: <https://attentionviz.com/>
-:: Documentation:: <https://catherinesyeh.github.io/attn-docs/>
+:: Documentation: <https://catherinesyeh.github.io/attn-docs/>
 :: Repository: <https://github.com/catherinesyeh/attention-viz>
 ```
 
 > Attention Viz is an interactive tool that visualizes global attention patterns for transformer models. To create this tool, we visualize the joint embeddings of **query** and **key** vectors.
 
-![](2023-12-11-14-06-25.png)
-![](2023-12-11-14-06-40.png)
-![](2023-12-11-14-06-53.png)
+{{#tile
+:: ![](assets/2023-12-11-14-06-25.png)
+:: ![](assets/2023-12-11-14-06-40.png)
+:: ![](assets/2023-12-11-14-06-53.png)
+}}
 
-## attentions
+##### attentions {.pagetoc-exclude}
 
 
 ```info
@@ -104,7 +62,9 @@ The repository link contains information about usage as well as several links to
 :: Repository: <https://github.com/sooftware/attentions>
 ```
 
-![attentions screenshot](2023-12-11-15-51-33.png)
+{{#tile
+:: ![attentions screenshot](assets/2023-12-11-15-51-33.png)
+}}
 
 <table>
 <thead>
@@ -121,7 +81,67 @@ The repository link contains information about usage as well as several links to
 </tbody>
 </table>
 
-## CNN Explainer
+#### Other
+
+##### Anomagram {.pagetoc-exclude}
+```info
+:: Tagline: Interactive Visualization for Autoencoders with Tensorflow.js
+:: Live Demo: <https://anomagram.fastforwardlabs.com/#/>
+:: Repository: <https://github.com/victordibia/anomagram>
+```
+
+> Anomagram is an interactive experience built with Tensorflow.js to demonstrate how deep neural networks (autoencoders) can be applied to the task of anomaly detection.
+
+<!--TODO: Images-->
+
+##### DRLViz
+```info
+:: Tagline: Online demo of DRLViz, an interactive tool to understand decisions and memory in Deep Reinforcement Learning
+:: Live Demo: <https://sical.github.io/drlviz/>
+:: Repository: <https://github.com/sical/drlviz>
+```
+
+<!--TODO: Images-->
+
+##### VisualML {.pagetoc-exclude}
+
+```info
+:: Tagline: TODO
+:: Live Demo: (multiple --see below)
+:: Repository: <https://github.com/dsgiitr/VisualML>
+```
+
+> Visual Machine Learning contains a set of Machine Learning and Deep Learning interactive visualisation demos for developing intuition. These demos are developed using TensorFlow.js and can be executed directly in your browser.
+
+<!--TODO: Images-->
+
+**Live demo links:**
+1. [ANN](https://dsgiitr.github.io/ann-demo)
+2. [Autoencoder](https://dsgiitr.github.io/autoencoder-demo)
+3. [Logistic Regression](https://dsgiitr.github.io/logistic-regression-demo)
+4. [CNN](https://dsgiitr.github.io/mnist-cnn-demo)
+5. [PCA](https://dsgiitr.github.io/pca-demo)
+6. [SVM](https://dsgiitr.github.io/svm-demo)
+7. [Neural Style Transfer](https://dsgiitr.github.io/neural-style-transfer-tfjs)
+8. [Vanishing Gradients & ReLU](https://dsgiitr.github.io/vanishing-gradients-demo)
+
+
+##### RNN Explainer {.pagetoc-exclude}
+
+```info
+:: Tagline: An interactive visualization application designed to help non-experts learn about Recurrent Neural Networks (RNNs).
+:: Live demo: <https://damien0x0023.github.io/rnnExplainer/>
+:: Repository: <https://github.com/damien0x0023/rnnExplainer>
+```
+
+```admonish info
+(Recommendation: "try this demo with a screen which is larger than 8 inches and has a minimum resolution of 1280x720")
+```
+
+<!--TODO: Images-->
+
+
+##### CNN Explainer {.pagetoc-exclude}
 
 ```info
 :: Tagline: Learning Convolutional Neural Networks with Interactive Visualization;<br/>An interactive visualization system designed to help non-experts learn about Convolutional Neural Networks (CNNs)
@@ -131,10 +151,11 @@ The repository link contains information about usage as well as several links to
 
 <!--{{#embed https://youtu.be/HnWIHWFbuUQ }}-->
 <!--<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/HnWIHWFbuUQ?si=Ri26ECN1J4bvGheD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>-->
-<a title="Watch on YouTube" tooltip="Watch on YouTube" href="https://youtu.be/HnWIHWFbuUQ"><image src="2023-12-11-16-14-44.png"/></a>
+{{#tile
+:: <a title="Watch on YouTube" tooltip="Watch on YouTube" href="https://youtu.be/HnWIHWFbuUQ"><image src="2023-12-11-16-14-44.png"/></a>
+}}
 
-
-## Diffusion Explainer
+##### Diffusion Explainer {.pagetoc-exclude}
 
 ```info
 :: Tagline: Diffusion Explainer: Visual Explanation for Text-to-image Stable Diffusion
@@ -144,10 +165,10 @@ The repository link contains information about usage as well as several links to
 :: Blog post: <https://medium.com/@seongminleee/77b53f4f1c4>
 :: Repository: <https://github.com/poloclub/diffusion-explainer>
 ```
-
-![Diffusion Explainer screenshot](2023-12-11-16-20-54.png)
-
-## Wizmap
+{{#tile
+:: ![Diffusion Explainer screenshot](assets/2023-12-11-16-20-54.png)
+}}
+##### Wizmap {.pagetoc-exclude}
 
 ```info
 :: Tagline: Explore and interpret large embeddings in your browser with interactive visualization! 📍
@@ -161,7 +182,9 @@ The repository includes an [interactive notebook](https://github.com/poloclub/wi
 
 > WizMap is a scalable interactive visualization tool to help you easily explore large machine learning embeddings. With a novel multi-resolution embedding summarization method and a familiar map-like interaction design, WizMap allows you to navigate and interpret embedding spaces with ease.
 
-![WizMap features image](2023-12-11-16-33-42.png)
+{{#tile
+:: ![WizMap features image](assets/2023-12-11-16-33-42.png)
+}}
 <table>
   <tbody><tr>
     <td><a href="https://poloclub.github.io/wizmap/?dataset=diffusiondb" rel="nofollow"><img src="https://camo.githubusercontent.com/392dbe96b9a6430aaaf070cb43ac9618f9d6dec7d0c67fc26b3f758c36396615/68747470733a2f2f692e696d6775722e636f6d2f6854637533724a2e6a7067" width="100%" data-canonical-src="https://i.imgur.com/hTcu3rJ.jpg" style="max-width: 100%;"></a></td>
@@ -189,17 +212,18 @@ The repository includes an [interactive notebook](https://github.com/poloclub/wi
   <tr></tr>
 </tbody></table>
 
-## GanLab
+##### GanLab {.pagetoc-exclude}
 
 ```info
 :: Tagline: GAN Lab: An Interactive, Visual Experimentation Tool for Generative Adversarial Networks
 :: Live demo: <https://poloclub.github.io/ganlab/>
 :: Repository: <https://github.com/poloclub/ganlab?tab=readme-ov-file>
 ```
+{{#tile
+:: ![GanLab screenshot](assets/2023-12-11-16-36-42.png)
+}}
 
-![GanLab screenshot](2023-12-11-16-36-42.png)
-
-## TimberTrek
+##### TimberTrek {.pagetoc-exclude}
 
 ```info
 :: Tagline: Explore and compare 1K+ accurate decision trees in your browser!
@@ -211,9 +235,11 @@ The repository includes an [interactive notebook](https://github.com/poloclub/wi
 :: Repository: <https://github.com/poloclub/timbertrek>
 ```
 
-![TimberTrek screenshot](2023-12-11-16-40-26.png)
+{{#tile
+:: ![TimberTrek screenshot](assets/2023-12-11-16-40-26.png)
+}}
 
-## GAM Coach
+##### GAM Coach {.pagetoc-exclude}
 
 ```info
 :: Tagline: An interactive tool to help everyday users discover actionable strategies to obtain desired AI decisions.
@@ -222,12 +248,10 @@ The repository includes an [interactive notebook](https://github.com/poloclub/wi
 :: Research paper: <https://arxiv.org/abs/2302.14165>
 :: Repository: <https://github.com/poloclub/gam-coach>
 ```
-
-![GAM Coach screenshot](![GAM%20Coach%20screenshot](2023-12-11-16-42-27.png).png)
-
-![GAM Coach GIF](https://user-images.githubusercontent.com/15007159/230276843-f82102ec-ad5e-425e-a9e5-6f62127d0ee6.gif)
-
-## Interactive Classification
+{{#tile
+:: ![GAM Coach GIF](https://user-images.githubusercontent.com/15007159/230276843-f82102ec-ad5e-425e-a9e5-6f62127d0ee6.gif)
+}}
+##### Interactive Classification {.pagetoc-exclude}
 
 ```info
 :: Tagline: Interactive Classification for Deep Learning Interpretation
@@ -239,12 +263,12 @@ The live demo includes a "tour"-style tutorial.
 
 > Interactive Classification allows you to explore how computers see by modifying images.
 
-<a href="https://youtu.be/llub5GcOF6w" rel="nofollow" title="YouTube video demo" tooltip="YouTube video demo"><img src="2023-12-11-16-47-25.png" alt="YouTube video demo" style="max-width: 100%;"></a>
+{{#tile
+:: <a href="https://youtu.be/llub5GcOF6w" rel="nofollow" title="YouTube video demo" tooltip="YouTube video demo"><img src="2023-12-11-16-47-25.png" alt="YouTube video demo" style="max-width: 100%;"></a>
+:: ![Interactive Classification screenshot](assets/2023-12-11-16-50-34.png)
+}}
 
-![Interactive Classification screenshot](2023-12-11-16-50-34.png)
-
-
-## WebSHAP
+##### WebSHAP {.pagetoc-exclude}
 
 ```info
 :: Tagline: JavaScript library to explain any machine learning models anywhere!
@@ -254,18 +278,28 @@ The live demo includes a "tour"-style tutorial.
 :: Repository: <https://github.com/poloclub/webshap>
 ```
 
-![](https://user-images.githubusercontent.com/15007159/225991959-c2b10d8b-be24-4f5c-a6f4-2b9f5876095c.gif)
+{{#tile
+:: ![](https://user-images.githubusercontent.com/15007159/225991959-c2b10d8b-be24-4f5c-a6f4-2b9f5876095c.gif)
+}}
 
-**Live Demo List** (see Repository README.md for more info)
+###### **Live Demo List** (see Repository README.md for more info) {.pagetoc-exclude}
 
 1. [Financial ML model for predictive classification](https://poloclub.github.io/webshap/?model=tabular)
-![](2023-12-11-16-55-16.png)
-2. [Convolutional NN for image classification](https://poloclub.github.io/webshap/?model=image) 
-![](2023-12-11-16-55-41.png)
-3. [Transformer-based text classifier](https://poloclub.github.io/webshap/?model=text)
-![](2023-12-11-16-56-43.png)
+{{#tile
+:: ![](assets/2023-12-11-16-55-16.png)
+}}
 
-## Bluff
+2. [Convolutional NN for image classification](https://poloclub.github.io/webshap/?model=image) 
+{{#tile
+:: ![](assets/2023-12-11-16-55-41.png)
+}}
+
+3. [Transformer-based text classifier](https://poloclub.github.io/webshap/?model=text)
+{{#tile
+:: ![](assets/2023-12-11-16-56-43.png)
+}}
+
+##### Bluff {.pagetoc-exclude}
 
 ```info
 :: Tagline: Bluff: Interactively Deciphering Adversarial Attacks on Deep Neural Networks
@@ -274,4 +308,114 @@ The live demo includes a "tour"-style tutorial.
 :: Research paper: <https://arxiv.org/pdf/2009.02608.pdf>
 :: Repository: <https://github.com/poloclub/bluff>
 ```
-![Bluff screenshot](2023-12-11-17-01-37.png)
+
+{{#tile
+:: ![Bluff screenshot](assets/2023-12-11-17-01-37.png)
+}}
+
+##### Dodrio {.pagetoc-exclude}
+
+```info
+:: Tagline: Exploring attention weights in transformer-based models with linguistic knowledge.
+:: Live demo: <http://poloclub.github.io/dodrio/>
+:: Research paper: <https://arxiv.org/abs/2103.14625>
+:: Repository: <https://github.com/poloclub/dodrio>
+```
+
+> An interactive visualization system designed to help NLP researchers and practitioners analyze and compare attention weights in transformer-based models with linguistic knowledge.
+
+{{#tile
+:: <a href="https://youtu.be/qB-T9j7UTgE" title="Demo video on YouTube"><img src="2023-12-11-20-51-24.png"/></a>
+}}
+
+##### Neuro-Cartography {.pagetoc-exclude}
+
+```info
+:: Tagline: Scalable Automatic Visual Summarization of Concepts in Deep Neural Networks
+:: Live demo: <https://poloclub.github.io/neuro-cartography/>
+:: Demo video: <https://youtu.be/gx0dDNXFJA0>
+:: Research paper: <https://arxiv.org/abs/2108.12931>
+:: Repository: <https://github.com/poloclub/neuro-cartography>
+```
+
+{{#tile
+:: ![Neuro-Cartography screenshot](assets/2023-12-11-20-55-45.png)
+}}
+
+##### Visual Auditor {.pagetoc-exclude}
+
+```info
+:: Tagline: Interactive scalable auditing of model biases and vulnerabilities with interpretable mitigation; <br/>An interactive visualization system for identifying and understanding biases in machine learning models. 
+:: Live demo: <https://visual-auditor.surge.sh/>
+:: Repository: <https://github.com/poloclub/visual-auditor>
+```
+
+{{#tile
+:: ![Visual Auditor screenshot](assets/2023-12-11-20-57-53.png)
+}}
+
+##### TeleGam {.pagetoc-exclude}
+
+```info
+:: Tagline: TeleGam: Combining Visualization and Verbalization for Interpretable Machine Learning
+:: Live demo: <https://poloclub.github.io/telegam/>
+:: Demo video: <https://youtu.be/DKeyhVIABlQ>
+:: Repository: <https://github.com/poloclub/telegam>
+```
+
+> TeleGam is a prototype system that demonstrates how visualizations and verbalizations can collectively support interactive interpretation of machine learning models, for example, generalized additive models (GAMs).
+
+{{#tile
+:: <a href="https://youtu.be/DKeyhVIABlQ" title="Demo video on YouTube"><img src="2023-12-11-21-01-08.png"/></a>
+}}
+
+##### Convolution Sandbox {.spotlight}
+
+```info
+:: Tagline: 
+:: Live demo: <https://antoinebrl.github.io/blog/conv1d/>
+:: Repository: <https://github.com/antoinebrl/convolution1d-sandbox>
+```
+
+{{#tile
+:: ![Convolution Sandbox Screenshot 1](assets/2023-12-13-12-39-28.png)
+:: ![Convolution Sandbox Screenshot 2](assets/2023-12-13-12-37-34.png)
+}}
+
+> Convolutions are core to deep learning recent success, especially in computer vision. This interactive visualization help to grasp a better understanding of the step-by-step processing.
+> 
+> User can select different kernels and input signals among the predefined functions. Another option drag the dots to the wanted level. The app also illustrates the importance of the padding, the dilatation and stride parameters.
+
+##### Additional Resource Collections
+
+###### Machine Learning Tokyo's *Interactive Tools*
+
+```info
+:: Repository: <https://github.com/Machine-Learning-Tokyo/Interactive_Tools>
+```
+
+A small sampling of the contents:
+{{#tile
+:: ![](assets/2023-12-11-21-04-25.png)
+:: ![](assets/2023-12-11-21-04-42.png)
+:: ![](assets/2023-12-11-21-04-59.png)
+:: ![](assets/2023-12-11-21-05-16.png)
+}}
+
+###### geosci.ai
+
+```info
+:: Tagline: This mini-site hosts a series of experiments in artificial intelligence in the field of geoscience.
+:: Link: <https://geosci.ai/>
+```
+
+Contains 9 interactive applications and utilities involving geoscience. About half of them are specifically AI-related as well.
+
+{{#tile
+:: ![](assets/2023-12-12-17-10-52.png)
+:: ![](assets/2023-12-12-17-11-02.png)
+}}
+
+## Other Interactive Resource Collections
+
+- <https://github.com/stared/interactive-machine-learning-list>

@@ -325,7 +325,11 @@
 
         <!-- Custom JS scripts -->
         {{#each additional_js}}
-        <script src="{{ ../path_to_root }}{{this}}"></script>
+        <script type="text/javascript">
+            global = globalThis;
+        </script>
+        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.min.js" integrity="sha512-cWEytOR8S4v/Sd3G5P1Yb7NbYgF1YAUzlg1/XpDuouZVo3FEiMXbeWh4zewcYu/sXYQR5PgYLRbhf18X/0vpRg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>-->
+        <script type="module" src="{{ ../path_to_root }}{{this}}"></script>
         {{/each}}
 
         {{#if is_print}}
